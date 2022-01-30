@@ -1,6 +1,18 @@
 version: "3.2"
 
 services:
+  postgres:
+    container_name: postgres
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: primality_tester
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   redis:
     container_name: redis
     image: redis:5
@@ -11,4 +23,5 @@ services:
       - redis_data:/data
 
 volumes:
+  postgres_data:
   redis_data:
