@@ -2,10 +2,18 @@ import React from 'react';
 import { createTheme, ThemeProvider, CssBaseline, Container,  } from '@mui/material';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import PrimalityTest from './views/PrimalityTest';
+import Footer from './components/Footer';
 import Error404 from './views/Error404';
 
 const App = () => {
-  const theme = createTheme({});
+  const theme = createTheme({
+    palette: {
+      background: {
+        default: '#f5f5dc'
+      }
+    }
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -17,6 +25,7 @@ const App = () => {
           </Switch>
         </BrowserRouter>
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 };

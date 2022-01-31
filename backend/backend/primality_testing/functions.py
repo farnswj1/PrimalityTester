@@ -64,8 +64,8 @@ def is_prime(n):
     
     sieve_list = sieve_of_erathosthenes(1_000_000)
 
-    if n in sieve_list:
-        return True
+    if n < 1_000_000:
+        return n in sieve_list
     
     for prime in sieve_list:
         if n % prime == 0:
