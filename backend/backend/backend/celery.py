@@ -10,7 +10,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.beat_schedule = {
     'send-daily-use-statistics-email': {
         'task': 'core.send_daily_use_statistics_email',
-        'schedule': crontab(minute='*')
+        'schedule': crontab(minute=0, hour=0)
     }
 }
 

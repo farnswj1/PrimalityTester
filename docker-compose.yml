@@ -21,6 +21,60 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+  backend:
+    container_name: backend
+    image: backend
+    build: backend
+    restart: always
+    command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn backend.wsgi -w 4 -b 0.0.0.0:8000"
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+  celery_worker:
+    container_name: celery_worker
+    image: backend
+    build: backend
+    restart: always
+    command: celery -A backend worker -l info
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - backend
+  celery_beat:
+    container_name: celery_beat
+    image: backend
+    build: backend
+    restart: always
+    command: celery -A backend beat -l info
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - celery_worker
+  frontend:
+    container_name: frontend
+    image: frontend
+    build: frontend
+    restart: always
+    env_file:
+      - ./frontend/.env
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    depends_on:
+      - backend
+  nginx:
+    container_name: nginx
+    image: nginx
+    build: nginx
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
 
 volumes:
   postgres_data:
