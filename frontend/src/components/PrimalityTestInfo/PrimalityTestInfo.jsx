@@ -50,7 +50,7 @@ const PrimalityTestInfo = () => (
 			<Typography>
 				This test uses the Miller-Rabin primality test as well as
 				the <Link href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">
-					Sieve of Erathosthenes
+					Sieve of Eratosthenes
 				</Link>. The latter generates a list of primes under a given input number,
 				which makes testing primes less than the input to be quick. In this case,
 				we chose 1 million. We can test numbers larger than or equal to 1 million

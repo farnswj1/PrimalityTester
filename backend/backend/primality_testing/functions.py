@@ -2,8 +2,8 @@ from django.core.cache import cache
 from math import sqrt
 
 
-def sieve_of_erathosthenes(n):
-    cache_name = f'sieve_of_erathosthenes_{n}'
+def sieve_of_eratosthenes(n):
+    cache_name = f'sieve_of_eratosthenes_{n}'
     result = cache.get(cache_name)
 
     if not result:
@@ -38,7 +38,7 @@ def miller_rabin(n):
         m = m // 2
         t += 1
     
-    candidates = sieve_of_erathosthenes(100)
+    candidates = sieve_of_eratosthenes(100)
 
     for number in candidates:
         v = pow(number, m, n)
@@ -62,7 +62,7 @@ def is_prime(n):
     if n < 2:
         return False
     
-    sieve_list = sieve_of_erathosthenes(1_000_000)
+    sieve_list = sieve_of_eratosthenes(1_000_000)
 
     if n < 1_000_000:
         return n in sieve_list
