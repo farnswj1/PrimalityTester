@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 @shared_task(name='core.send_daily_use_statistics_email')
-def send_daily_use_statistics_email():
+def send_daily_use_statistics_email() -> None:
     yesterday = timezone.now().date() - timedelta(days=1)
     yesterday_as_str = yesterday.strftime('%m/%d/%Y')
 

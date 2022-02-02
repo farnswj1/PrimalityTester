@@ -2,7 +2,7 @@ from django.core.cache import cache
 from math import sqrt
 
 
-def sieve_of_eratosthenes(n):
+def sieve_of_eratosthenes(n: int) -> set[int]:
     cache_name = f'sieve_of_eratosthenes_{n}'
     result = cache.get(cache_name)
 
@@ -25,7 +25,7 @@ def sieve_of_eratosthenes(n):
     return result
 
 
-def miller_rabin(n):
+def miller_rabin(n: int) -> bool:
     if n == 2 or n == 3:
         return True
     elif n % 2 == 0:
@@ -58,7 +58,7 @@ def miller_rabin(n):
     return True
 
 
-def is_prime(n):
+def is_prime(n: int) -> bool:
     if n < 2:
         return False
     
