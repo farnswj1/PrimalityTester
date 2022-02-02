@@ -13,6 +13,7 @@ The project uses the following:
 - PostgreSQL 14
 - Redis 5
 - Nginx 1.21
+- Jenkins
 - Docker
 - Docker Compose
 

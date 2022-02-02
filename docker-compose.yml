@@ -1,5 +1,4 @@
 version: "3.2"
-
 services:
   postgres:
     container_name: postgres
@@ -21,6 +20,18 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+  jenkins:
+    container_name: jenkins
+    image: jenkins
+    build: jenkins
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
   backend:
     container_name: backend
     image: backend
@@ -75,7 +86,7 @@ services:
       - "80:80"
     depends_on:
       - frontend
-
 volumes:
   postgres_data:
   redis_data:
+  jenkins_data:
