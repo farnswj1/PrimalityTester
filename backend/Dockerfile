@@ -8,9 +8,10 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /backend
 
 # add application and install dependencies
-COPY Pipfile Pipfile.lock backend ./
+COPY Pipfile Pipfile.lock ./
 RUN pip install pipenv
 RUN pipenv install --system --deploy --ignore-pipfile
+COPY backend ./
 
 # expose port(s)
 EXPOSE 8000
