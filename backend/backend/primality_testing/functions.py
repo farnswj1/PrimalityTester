@@ -12,12 +12,10 @@ def sieve_of_eratosthenes(n: int) -> set[int]:
         sieve[0] = False
         sieve[1] = False
 
-        for number in range(2, int(sqrt(n)) + 1):
-            if sieve[number]:
-                k = number * 2
-                while k < n:
+        for i in range(2, int(sqrt(n)) + 1):
+            if sieve[i]:
+                for k in range(i * 2, n, i):
                     sieve[k] = False
-                    k += number
         
         result = set(number for number in range(n) if sieve[number])
         cache.set(cache_name, result, 86400)
