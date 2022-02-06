@@ -7,7 +7,7 @@ const PrimalityTestForm = ({ handleSubmit }) => {
 
 	const handleNumberChange = (event) => {
 		const number = event.target.value;
-		const intRegex = /^([2-9]|[1-9][0-9]+)$/;
+		const intRegex = /^\s*([2-9]|[1-9][0-9]+)\s*$/;
 		setError(!intRegex.test(number));
 
 		if (!formChanged) {

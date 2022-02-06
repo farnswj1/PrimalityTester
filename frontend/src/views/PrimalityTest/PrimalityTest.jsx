@@ -14,7 +14,7 @@ const PrimalityTest = () => {
     setLoading(true);
 
     let params = '';
-    const number = event.target.number.value;
+    const number = event.target.number.value.trim();
 
     if (number) {
       params = `?number=${encodeURIComponent(number)}`;
