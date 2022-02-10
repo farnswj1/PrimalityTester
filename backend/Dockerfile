@@ -11,7 +11,11 @@ WORKDIR /backend
 COPY Pipfile Pipfile.lock ./
 RUN pip install pipenv
 RUN pipenv install --system --deploy --ignore-pipfile
-COPY backend ./
+COPY backend supervisord.conf docker-entrypoint.sh ./
 
 # expose port(s)
 EXPOSE 8000
+
+# entrypoint
+RUN chmod a+x docker-entrypoint.sh
+ENTRYPOINT ["./docker-entrypoint.sh"]
