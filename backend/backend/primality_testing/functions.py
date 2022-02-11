@@ -18,7 +18,7 @@ def sieve_of_eratosthenes(n: int) -> set[int]:
                     sieve[k] = False
         
         result = set(number for number in range(n) if sieve[number])
-        cache.set(cache_name, result, 86400)
+        cache.set(cache_name, result, None)
     
     return result
 
