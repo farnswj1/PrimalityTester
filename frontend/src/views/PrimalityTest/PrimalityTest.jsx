@@ -49,7 +49,7 @@ const PrimalityTest = () => {
                 )
               }
               {
-                !loading && error !== null && (
+                !loading && error && (
                   <Typography variant="h4" align="center" color="error">
                     Please enter a number.
                   </Typography>
