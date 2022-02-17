@@ -31,7 +31,7 @@ SECRET_KEY=somerandomstring
 
 DEBUG=False
 ALLOWED_HOSTS=127.0.0.1
-CORS_ALLOWED_ORIGIN_REGEXES=^https?://(localhost|127\.0\.0\.1)(:3000)?$
+CORS_ALLOWED_ORIGIN_REGEXES=^https?://(localhost|127\.0\.0\.1)$
 
 DB_ENGINE=django.db.backends.postgresql_psycopg2
 DB_NAME=primality_tester
@@ -61,7 +61,7 @@ For more information, see the Django 4.0 documentation.
 The ```frontend``` directory must also have a ```.env``` file 
 with the following variables:
 ```
-REACT_APP_API_URL=http://127.0.0.1:8000/api/
+REACT_APP_API_URL=http://127.0.0.1/api/
 ```
 The URL should be the endpoint of the backend server.
 
