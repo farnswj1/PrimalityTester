@@ -1,4 +1,4 @@
-from django.urls import reverse
+from django.urls import reverse_lazy
 from rest_framework.test import APITestCase
 from rest_framework import status
 from primality_testing.functions import sieve_of_eratosthenes, miller_rabin
@@ -30,7 +30,7 @@ class TestFunctions(APITestCase):
 
 
 class TestPrimalityTestAPIView(APITestCase):
-    url_path = reverse('api:primality_testing:primality_test')
+    url_path = reverse_lazy('api:primality_testing:primality_test')
 
     def test_url_path(self):
         self.assertEqual(self.url_path, '/api/primality_testing/')
