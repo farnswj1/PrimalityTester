@@ -30,7 +30,7 @@ that contains the following environment variables:
 SECRET_KEY=somerandomstring
 
 DEBUG=False
-ALLOWED_HOSTS=127.0.0.1
+ALLOWED_HOSTS=localhost 127.0.0.1
 CORS_ALLOWED_ORIGIN_REGEXES=^https?://(localhost|127\.0\.0\.1)$
 
 DB_ENGINE=django.db.backends.postgresql_psycopg2
