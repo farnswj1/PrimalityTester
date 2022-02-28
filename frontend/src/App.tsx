@@ -1,12 +1,12 @@
-import React from 'react';
-import { createTheme, ThemeProvider, CssBaseline, Container,  } from '@mui/material';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { FC } from 'react';
+import { Container, createTheme, CssBaseline, Theme, ThemeProvider } from '@mui/material';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PrimalityTest from './views/PrimalityTest';
 import Footer from './components/Footer';
 import Error404 from './views/Error404';
 
-const App = () => {
-  const theme = createTheme({
+const App: FC = () => {
+  const theme: Theme = createTheme({
     palette: {
       background: {
         default: '#f5f5dc'

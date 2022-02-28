@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Grid, Box, Typography, LinearProgress } from '@mui/material';
+import React, { ChangeEvent, FC, useState } from 'react';
+import { Box, Grid, LinearProgress, Typography } from '@mui/material';
 import PrimalityTestForm from '../../components/PrimalityTestForm';
 import PrimalityTestInfo from '../../components/PrimalityTestInfo';
 import axios from 'axios';
 
-const PrimalityTest = () => {
-  const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState(null);
+const PrimalityTest: FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [result, setResult] = useState<boolean | null>(null);
+  const [error, setError] = useState<number | null>(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault();
     setLoading(true);
 
-    let params = '';
-    const number = event.target.number.value.trim();
+    let params: string = '';
+    const number: string = event.target.number.value.trim();
 
     if (number) {
       params = `?number=${encodeURIComponent(number)}`;
     }
 
-    const url = process.env.REACT_APP_API_URL + 'primality_testing/' + params;
+    const url: string = process.env.REACT_APP_API_URL + 'primality_testing/' + params;
     axios.get(url)
       .then(response => {
         setResult(response.data.result);

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Paper, Box, Typography, Link } from '@mui/material';
+import React, { FC } from 'react';
+import { Box, Link, Paper, Typography } from '@mui/material';
 
-const PrimalityTestInfo = () => (
+const PrimalityTestInfo: FC = () => (
   <Paper square={false} sx={{ p: 2 }}>
     <Box sx={{ mb: 3 }}>
       <Typography variant="h5">What is a prime?</Typography>

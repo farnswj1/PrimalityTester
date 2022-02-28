@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Grid, Paper, Typography, Button } from '@mui/material';
+import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 
-const Error404 = () => (
+const Error404: FC = () => (
   <Box>
     <Grid
       spacing={2}
       justifyContent="center"
-      align="center"
       container
     >
       <Grid item xs={6}>

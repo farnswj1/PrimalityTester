@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import { Paper, Box, Typography, FormControl, TextField, Button } from '@mui/material';
+import React, { ChangeEvent, FC, FormEventHandler, useState } from 'react';
+import { Box, Button, FormControl, Paper, TextField, Typography } from '@mui/material';
 
-const PrimalityTestForm = ({ handleSubmit }) => {
-  const [error, setError] = useState(false);
-  const [formChanged, setFormChanged] = useState(false);
+interface Props {
+  handleSubmit: FormEventHandler
+};
 
-  const handleNumberChange = (event) => {
-    const number = event.target.value.trim();
-    const intRegex = /^([2-9]|[1-9][0-9]+)$/;
+const PrimalityTestForm: FC<Props> = ({ handleSubmit }) => {
+  const [error, setError] = useState<boolean>(false);
+  const [formChanged, setFormChanged] = useState<boolean>(false);
+
+  const handleNumberChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    const number: string = event.target.value.trim();
+    const intRegex: RegExp = /^([2-9]|[1-9][0-9]+)$/;
     setError(!intRegex.test(number));
 
     if (!formChanged) {
