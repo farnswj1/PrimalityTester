@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC, useState } from 'react';
 import { Box, Grid, LinearProgress, Typography } from '@mui/material';
-import PrimalityTestForm from '../../components/PrimalityTestForm';
-import PrimalityTestInfo from '../../components/PrimalityTestInfo';
+import PrimalityTestForm from 'components/PrimalityTestForm';
+import PrimalityTestInfo from 'components/PrimalityTestInfo';
 import axios from 'axios';
 
 const PrimalityTest: FC = () => {

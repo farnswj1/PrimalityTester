@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Container, createTheme, CssBaseline, Theme, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import PrimalityTest from './views/PrimalityTest';
-import Footer from './components/Footer';
-import Error404 from './views/Error404';
+import PrimalityTest from 'views/PrimalityTest';
+import Footer from 'components/Footer';
+import Error404 from 'views/Error404';
 
 const App: FC = () => {
   const theme: Theme = createTheme({
