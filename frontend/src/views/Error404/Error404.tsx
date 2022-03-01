@@ -7,6 +7,7 @@ const Error404: FC = () => (
     <Grid
       spacing={2}
       justifyContent="center"
+      textAlign="center"
       container
     >
       <Grid item xs={6}>
