@@ -16,15 +16,6 @@ services:
     restart: always
     volumes:
       - redis_data:/data
-  jenkins:
-    container_name: jenkins
-    image: jenkins
-    build: jenkins
-    privileged: true
-    user: root
-    volumes:
-      - jenkins_data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
   backend:
     container_name: backend
     image: backend
@@ -61,5 +52,4 @@ services:
 volumes:
   postgres_data:
   redis_data:
-  jenkins_data:
   backend_static:
