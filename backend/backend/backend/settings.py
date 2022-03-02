@@ -32,6 +32,8 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     fr'{regex}' for regex in os.environ.get('CORS_ALLOWED_ORIGIN_REGEXES').split()
 ]
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Application definition
 
 INSTALLED_APPS = [
