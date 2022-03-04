@@ -1,13 +1,14 @@
 import React, { ChangeEvent, FC, useState } from 'react';
 import { Box, Grid, LinearProgress, Typography } from '@mui/material';
-import PrimalityTestForm from 'components/PrimalityTestForm';
-import PrimalityTestInfo from 'components/PrimalityTestInfo';
+import PrimalityTestForm from './PrimalityTestForm';
+import PrimalityTestInfo from './PrimalityTestInfo';
 import axios from 'axios';
 
 const PrimalityTest: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState<boolean | null>(null);
   const [error, setError] = useState<number | null>(null);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -34,13 +35,21 @@ const PrimalityTest: FC = () => {
     setLoading(false);
   }
 
+  const openHelpModal = (): void => {
+    setOpenModal(true);
+  };
+
+  const closeHelpModal = (): void => {
+    setOpenModal(false);
+  };
+
   return (
     <Box>
-      <Grid spacing={2} container>
-        <Grid item xs={12} sm={12} md={12} lg={7}>
+      <Grid container justifyContent="center">
+        <Grid item xs={12} sm={10} md={8} lg={6}>
           <Box>
             <Box>
-              <PrimalityTestForm handleSubmit={handleSubmit} />
+              <PrimalityTestForm handleSubmit={handleSubmit} openModal={openHelpModal} />
             </Box>
             <Box sx={{ my: 5 }}>
               {
@@ -65,10 +74,10 @@ const PrimalityTest: FC = () => {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={5}>
-          <PrimalityTestInfo />
-        </Grid>
       </Grid>
+      <Box>
+        <PrimalityTestInfo open={openModal} onClose={closeHelpModal} />
+      </Box>
     </Box>
   );
 }
