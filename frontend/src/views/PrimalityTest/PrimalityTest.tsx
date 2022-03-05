@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC, useState } from 'react';
 import { Box, Grid, LinearProgress, Typography } from '@mui/material';
+import CustomGrow from 'components/CustomGrow';
 import PrimalityTestForm from './PrimalityTestForm';
 import PrimalityTestInfo from './PrimalityTestInfo';
 import axios from 'axios';
@@ -44,41 +45,43 @@ const PrimalityTest: FC = () => {
   };
 
   return (
-    <Box>
-      <Grid container justifyContent="center">
-        <Grid item xs={12} sm={10} md={8} lg={6}>
-          <Box>
-            <Box>
-              <PrimalityTestForm handleSubmit={handleSubmit} openModal={openHelpModal} />
-            </Box>
-            <Box sx={{ my: 5 }}>
-              {
-                loading && (
-                  <LinearProgress color="success" />
-                )
-              }
-              {
-                !loading && error && (
-                  <Typography variant="h4" align="center" color="error">
-                    Please enter a number.
-                  </Typography>
-                )
-              }
-              {
-                !loading && result !== null && (
-                  <Typography variant="h4" align="center">
-                    {result ? 'Prime' : 'Not Prime'}
-                  </Typography>
-                )
-              }
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
+    <CustomGrow>
       <Box>
-        <PrimalityTestInfo open={openModal} onClose={closeHelpModal} />
+        <Grid container justifyContent="center">
+          <Grid item xs={12} sm={10} md={8} lg={6}>
+            <Box>
+              <Box>
+                <PrimalityTestForm handleSubmit={handleSubmit} openModal={openHelpModal} />
+              </Box>
+              <Box sx={{ my: 5 }}>
+                {
+                  loading && (
+                    <LinearProgress color="success" />
+                  )
+                }
+                {
+                  !loading && error && (
+                    <Typography variant="h4" align="center" color="error">
+                      Please enter a number.
+                    </Typography>
+                  )
+                }
+                {
+                  !loading && result !== null && (
+                    <Typography variant="h4" align="center">
+                      {result ? 'Prime' : 'Not Prime'}
+                    </Typography>
+                  )
+                }
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+        <Box>
+          <PrimalityTestInfo open={openModal} onClose={closeHelpModal} />
+        </Box>
       </Box>
-    </Box>
+    </CustomGrow>
   );
 }
 
