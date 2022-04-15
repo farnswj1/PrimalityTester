@@ -1,26 +1,20 @@
-from django.core.cache import cache
+from core.decorators import memoize
 from math import sqrt
 
 
+@memoize(timeout=None)
 def sieve_of_eratosthenes(n: int) -> set[int]:
-    cache_name = f'sieve_of_eratosthenes_{n}'
-    result = cache.get(cache_name)
+    sieve = [True] * n
 
-    if not result:
-        sieve = [True] * n
+    sieve[0] = False
+    sieve[1] = False
 
-        sieve[0] = False
-        sieve[1] = False
-
-        for i in range(2, int(sqrt(n)) + 1):
-            if sieve[i]:
-                for k in range(i * 2, n, i):
-                    sieve[k] = False
-        
-        result = set(number for number in range(n) if sieve[number])
-        cache.set(cache_name, result, None)
+    for i in range(2, int(sqrt(n)) + 1):
+        if sieve[i]:
+            for k in range(i * 2, n, i):
+                sieve[k] = False
     
-    return result
+    return set(number for number in range(n) if sieve[number])
 
 
 def miller_rabin(n: int) -> bool:
