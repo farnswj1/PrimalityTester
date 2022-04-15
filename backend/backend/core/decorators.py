@@ -24,7 +24,7 @@ def memoize(timeout=None):
             cache_key = _get_cache_key(*args, **kwargs)
             result = cache.get(cache_key)
 
-            if not result:
+            if result is None:
                 result = func(*args, **kwargs)
                 cache.set(cache_key, result, timeout)
             
