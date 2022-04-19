@@ -14,7 +14,7 @@ def sieve_of_eratosthenes(n: int) -> set[int]:
             for k in range(i * 2, n, i):
                 sieve[k] = False
     
-    return set(number for number in range(n) if sieve[number])
+    return set(number for number, is_prime in enumerate(sieve) if is_prime)
 
 
 def miller_rabin(n: int) -> bool:
