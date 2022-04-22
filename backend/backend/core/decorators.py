@@ -8,12 +8,12 @@ def memoize(timeout=None):
             cache_key = func.__name__
 
             if args:
-                args_str = '_'.join(quote(str(arg)) for arg in args)
+                args_str = quote('_'.join(map(str, args)))
                 cache_key += f'__{args_str}'
 
             if kwargs:
-                kwargs_str = '_'.join(
-                    quote(f'{key}={value}') for key, value in sorted(kwargs.items())
+                kwargs_str = quote(
+                    '_'.join(f'{key}={value}' for key, value in sorted(kwargs.items()))
                 )
                 cache_key += f'__{kwargs_str}'
 
