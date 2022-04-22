@@ -13,8 +13,7 @@ def memoize(timeout=None):
 
             if kwargs:
                 kwargs_str = '_'.join(
-                    f'{quote(key)}={quote(str(value))}'
-                    for key, value in sorted(kwargs.items())
+                    quote(f'{key}={value}') for key, value in sorted(kwargs.items())
                 )
                 cache_key += f'__{kwargs_str}'
 
@@ -29,6 +28,5 @@ def memoize(timeout=None):
                 cache.set(cache_key, result, timeout)
             
             return result
-
         return wrapper
     return decorator_func
