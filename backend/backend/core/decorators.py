@@ -5,7 +5,9 @@ from urllib.parse import quote
 def memoize(timeout=None):
     def decorator_func(func):
         def _get_cache_key(*args, **kwargs):
-            cache_key = func.__name__
+            module = func.__module__
+            name = func.__name__
+            cache_key = f'{module}.{name}' if module else name
 
             if args:
                 args_str = quote('_'.join(map(str, args)))
