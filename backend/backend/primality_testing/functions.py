@@ -35,7 +35,7 @@ def miller_rabin(n: int) -> bool:
     for number in candidates:
         v = pow(number, m, n)
 
-        if not v == 1 and not v == n - 1:
+        if v != 1 and v != n - 1:
             i = 0
 
             while v != n - 1:
