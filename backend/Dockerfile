@@ -11,7 +11,7 @@ WORKDIR /backend
 RUN pip install pipenv
 COPY Pipfile Pipfile.lock ./
 RUN pipenv install --system --deploy --ignore-pipfile
-COPY backend supervisord.conf docker-entrypoint.sh ./
+COPY . ./
 
 # entrypoint
 RUN chmod a+x docker-entrypoint.sh
