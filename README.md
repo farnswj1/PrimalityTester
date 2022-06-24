@@ -11,7 +11,7 @@ The project uses the following:
 - React 17.0.2
 - Material-UI 5.3.1
 - PostgreSQL 14
-- Redis 5
+- Redis 7
 - Nginx 1.21
 - Jenkins
 - Docker
