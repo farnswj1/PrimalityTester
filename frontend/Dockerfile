@@ -5,7 +5,7 @@ FROM node:17-alpine
 WORKDIR /frontend
 
 # add application and install dependencies
-RUN npm install -g serve@13.0.2
+RUN npm install -g serve
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . ./
