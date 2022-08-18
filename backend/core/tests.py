@@ -1,13 +1,13 @@
 from rest_framework.test import APITestCase
-from core.models import IPAddress
+from core.factories import IPAddressFactory
 from datetime import datetime
 
 # Create your tests here.
 class TestIPAddress(APITestCase):
     def setUp(self):
-        IPAddress.objects.create(ip_address='192.168.0.1')
+        self.ip_address = IPAddressFactory()
 
     def test_ip_address_created(self):
-        ip = IPAddress.objects.get(ip_address='192.168.0.1')
-        self.assertIsInstance(ip.date_added, datetime)
-        self.assertIsInstance(ip.last_request, datetime)
+        self.assertIsInstance(self.ip_address.ip_address, str)
+        self.assertIsInstance(self.ip_address.date_added, datetime)
+        self.assertIsInstance(self.ip_address.last_request, datetime)
