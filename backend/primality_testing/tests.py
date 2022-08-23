@@ -71,8 +71,13 @@ class TestPrimalityTestAPIView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertFalse(response.data.get('result'))
 
-    def test_bad_request(self):
+    def test_bad_request_value_error(self):
         url_path_with_params = self.url_path + '?number=123qwerty456'
         response = self.client.get(url_path_with_params, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIsNotNone(response.data.get('error'))
+
+    def test_bad_request_no_number(self):
+        response = self.client.get(self.url_path, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIsNotNone(response.data.get('error'))
