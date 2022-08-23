@@ -28,7 +28,7 @@ def memoize(timeout=None):
             if result is None:
                 result = func(*args, **kwargs)
                 cache.set(cache_key, result, timeout)
-            
+
             return result
         return wrapper
     return decorator_func

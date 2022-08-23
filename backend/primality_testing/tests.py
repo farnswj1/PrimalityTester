@@ -8,8 +8,8 @@ class TestFunctions(APITestCase):
     def test_sieve_of_eratosthenes(self):
         primes_under_50 = sieve_of_eratosthenes(50)
         expected_primes_under_50 = {
-            2, 3, 37, 5, 7, 41, 11, 43,
-            13, 47, 17, 19, 23, 29, 31
+            2, 3, 5, 7, 11, 13, 17, 19,
+            23, 29, 31, 37, 41, 43, 47
         }
         self.assertEqual(primes_under_50, expected_primes_under_50)
 
@@ -21,12 +21,12 @@ class TestFunctions(APITestCase):
         self.assertEqual(primes_under_100, expected_primes_under_100)
 
     def test_miller_rabin(self):
-        self.assertEqual(miller_rabin(101), True)
-        self.assertEqual(miller_rabin(8191), True)
-        self.assertEqual(miller_rabin(1_000_000_007), True)
-        self.assertEqual(miller_rabin(1000), False)
-        self.assertEqual(miller_rabin(1_000_004), False)
-        self.assertEqual(miller_rabin(1_234_567_890), False)
+        self.assertTrue(miller_rabin(101))
+        self.assertTrue(miller_rabin(8191))
+        self.assertTrue(miller_rabin(1_000_000_007))
+        self.assertFalse(miller_rabin(1000))
+        self.assertFalse(miller_rabin(1_000_004))
+        self.assertFalse(miller_rabin(1_234_567_890))
 
 
 class TestPrimalityTestAPIView(APITestCase):
@@ -39,37 +39,37 @@ class TestPrimalityTestAPIView(APITestCase):
         url_path_with_params = self.url_path + '?number=23'
         response = self.client.get(url_path_with_params, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data.get('result'), True)
+        self.assertTrue(response.data.get('result'))
 
     def test_number_4194301_is_prime(self):
         url_path_with_params = self.url_path + '?number=4194301'
         response = self.client.get(url_path_with_params, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data.get('result'), True)
+        self.assertTrue(response.data.get('result'))
 
     def test_number_16777213_is_prime(self):
         url_path_with_params = self.url_path + '?number=16777213'
         response = self.client.get(url_path_with_params, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data.get('result'), True)
+        self.assertTrue(response.data.get('result'))
 
     def test_number_1_is_not_prime(self):
         url_path_with_params = self.url_path + '?number=1'
         response = self.client.get(url_path_with_params, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data.get('result'), False)
+        self.assertFalse(response.data.get('result'))
 
     def test_number_1000_is_not_prime(self):
         url_path_with_params = self.url_path + '?number=1000'
         response = self.client.get(url_path_with_params, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data.get('result'), False)
+        self.assertFalse(response.data.get('result'))
 
     def test_number_1922760350154212639069_is_not_prime(self):
         url_path_with_params = self.url_path + '?number=1922760350154212639069'
         response = self.client.get(url_path_with_params, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data.get('result'), False)
+        self.assertFalse(response.data.get('result'))
 
     def test_bad_request(self):
         url_path_with_params = self.url_path + '?number=123qwerty456'

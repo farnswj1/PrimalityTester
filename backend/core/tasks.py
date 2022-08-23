@@ -19,7 +19,7 @@ def send_daily_use_statistics_email() -> None:
 
     number_of_users = IPAddress.objects.filter(last_request__date=yesterday).count()
     number_of_new_users = IPAddress.objects.filter(date_added__date=yesterday).count()
-    
+
     context = {
         'date': yesterday_as_str,
         'number_of_users': number_of_users,
