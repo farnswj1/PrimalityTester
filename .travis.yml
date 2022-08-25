@@ -4,6 +4,7 @@ python:
 dist: focal
 services:
   - docker
+install: skip
 before_script:
   - env > ./backend/.env
   - env > ./frontend/.env
