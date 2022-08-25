@@ -12,5 +12,6 @@ before_script:
 script:
   - docker exec backend python manage.py test
   - docker exec frontend npm test --watchAll=false
+  - docker exec nginx nginx -t
 after_script:
   - docker-compose down
