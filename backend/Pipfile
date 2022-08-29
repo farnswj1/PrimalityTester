@@ -5,6 +5,8 @@ verify_ssl = true
 
 [dev-packages]
 ipython = "==8.0.1"
+factory-boy = "==3.2.1"
+pytest-django = "==4.5.2"
 
 [packages]
 django = "==4.0.1"
@@ -15,7 +17,6 @@ celery = "==5.2.3"
 django-celery-beat = "==2.1.0"
 redis = "==4.1.2"
 hiredis = "==2.0.0"
-factory-boy = "==3.2.1"
 uvicorn = {version = "==0.18.2", extras = ["standard"]}
 gunicorn = "==20.1.0"
 supervisor = "==4.2.4"
