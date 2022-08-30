@@ -76,3 +76,6 @@ To build, run ```docker-compose build```
 ## Running
 To run the web app, run ```docker-compose up -d```, then 
 go to http://localhost using your web browser.
+
+You can also monitor and manage asynchronous tasks at 
+http://localhost/api/flower using the UI provided by Flower.
