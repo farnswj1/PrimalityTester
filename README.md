@@ -4,7 +4,7 @@ This web app determines whether or not a number is prime.
 
 ## Setup
 The project uses the following:
-- Python 3.9
+- Python 3.11
 - Django 4.0.1
 - Celery 5.2.3
 - NPM
@@ -70,12 +70,29 @@ The URL should be the endpoint of the backend server.
 The project uses Docker. Ensure Docker and Docker Compose are installed 
 before continuing.
 
-To build, run ```docker-compose build```
+To build, run ```docker compose build```
 
 
 ## Running
-To run the web app, run ```docker-compose up -d```, then 
+To run the web app, run ```docker compose up -d```, then
 go to http://localhost using your web browser.
 
 You can also monitor and manage asynchronous tasks at 
 http://localhost/api/flower using the UI provided by Flower.
+
+
+### Setting Up HTTPS With Certbot
+There are configurations already set up via `cli.ini` in the `certbot` directory.
+To receive an SSL certificate using those configurations, run:
+```
+docker compose run --no-deps --rm certbot certonly -d [enter domain here]
+```
+
+Fill out the prompt, then configure Nginx to use the SSL certificate and domain.
+
+To renew the SSL certificate and use the newest certificate, run:
+```
+docker compose run --no-deps --rm certbot renew && docker exec nginx nginx -s reload
+```
+
+**NOTE**: Ensure port 443 is exposed in `docker-compose.yml` for HTTPS.

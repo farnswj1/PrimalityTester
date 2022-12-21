@@ -2,7 +2,7 @@
 FROM node:17-alpine
 
 # set directory
-WORKDIR /frontend
+WORKDIR /opt/app
 
 # add application and install dependencies
 RUN npm install -g serve
