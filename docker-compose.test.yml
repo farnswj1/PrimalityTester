@@ -4,8 +4,10 @@ services:
     container_name: postgres
     image: postgres:14
     restart: always
-    env_file:
-      - ./postgres/.env
+    environment:
+      POSTGRES_DB: primality_tester
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
     volumes:
       - postgres_data:/var/lib/postgresql/data/:rw
   redis:
