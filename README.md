@@ -22,6 +22,17 @@ For additional information on project specifications, see
 ```frontend/package.json``` for the frontend respectively.
 
 
+### PostgreSQL
+In the ```postgres``` directory, create a ```.env``` file 
+that contains the following environment variables:
+
+```
+POSTGRES_DB=primality_tester
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password
+```
+
+
 ### Backend
 In the ```backend``` directory, create a ```.env``` file 
 that contains the following environment variables:
@@ -51,7 +62,7 @@ EMAIL_HOST_PASSWORD=password
 
 The database variables can be changed as desired. 
 However, make sure to update the environment variables in 
-```docker-compose.yml``` as well.
+```postgres/.env``` as well.
 
 The email configurations can also be configured. 
 For more information, see the Django 4.0 documentation.
