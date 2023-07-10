@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 
 class IPAddress(models.Model):
-    ip_address = models.GenericIPAddressField(primary_key=True)
+    ip_address = models.GenericIPAddressField(verbose_name='IP address', primary_key=True)
     date_added = models.DateTimeField(auto_now_add=True)
     last_request = models.DateTimeField(auto_now=True)
 

@@ -1,6 +1,9 @@
 # base image
 FROM python:3.11
 
+# expose ports
+EXPOSE 8000
+
 # set environment variables
 ENV PYTHONUNBUFFERED 1
 

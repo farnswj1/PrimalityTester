@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import {
   Box,
   Button,
@@ -9,12 +9,15 @@ import {
   Link
 } from '@mui/material';
 
-interface Props {
+interface PrimalityTestInfoProps {
   open: boolean,
   onClose: MouseEventHandler
 };
 
-const PrimalityTestInfo: FC<Props> = ({ open, onClose }) => (
+const PrimalityTestInfo: FC<PrimalityTestInfoProps> = ({
+  open,
+  onClose
+}) => (
   <Dialog
     open={open}
     onClose={onClose}
@@ -22,16 +25,20 @@ const PrimalityTestInfo: FC<Props> = ({ open, onClose }) => (
     aria-describedby="primality-test-info"
   >
     <DialogContent>
-      <Box sx={{ mb: 3 }}>
-        <DialogContentText variant="h5">What is a prime?</DialogContentText>
+      <Box marginBottom={3}>
+        <DialogContentText variant="h5">
+          What is a prime?
+        </DialogContentText>
         <DialogContentText>
           A prime is an integer greater than 1 that is divisible only by 1 and itself.
           For example: 7 is a prime since its only factors are 1 and 7. However,
           9 is not a prime since its factors are 1, 3, and 9.
         </DialogContentText>
       </Box>
-      <Box sx={{ mb: 3 }}>
-        <DialogContentText variant="h5">Why do we care?</DialogContentText>
+      <Box marginBottom={3}>
+        <DialogContentText variant="h5">
+          Why do we care?
+        </DialogContentText>
         <DialogContentText>
           Aside from being an interesting mathematical property, it is used in
           cybersecurity, where primes play an integral role in cryptography.
@@ -43,9 +50,11 @@ const PrimalityTestInfo: FC<Props> = ({ open, onClose }) => (
           </Link>, depend on it.
         </DialogContentText>
       </Box>
-      <Box sx={{ mb: 3 }}>
-        <DialogContentText variant="h5">How do we check if it's prime?</DialogContentText>
-        <DialogContentText sx={{ mb: 3 }}>
+      <Box marginBottom={3}>
+        <DialogContentText variant="h5">
+          How do we check if it's prime?
+        </DialogContentText>
+        <DialogContentText marginBottom={3}>
           One such way is to exhaustively check every number between 1 and itself
           (non-inclusive) to see if any of them divide the number. If any do, then
           it is not prime, or composite. While this is guaranteed to work, it is
@@ -65,7 +74,9 @@ const PrimalityTestInfo: FC<Props> = ({ open, onClose }) => (
         </DialogContentText>
       </Box>
       <Box>
-        <DialogContentText variant="h5">What does this test use?</DialogContentText>
+        <DialogContentText variant="h5">
+          What does this test use?
+        </DialogContentText>
         <DialogContentText>
           This test uses the Miller-Rabin primality test as well as
           the <Link href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">
@@ -81,7 +92,9 @@ const PrimalityTestInfo: FC<Props> = ({ open, onClose }) => (
       </Box>
     </DialogContent>
     <DialogActions>
-      <Button onClick={onClose}>Close</Button>
+      <Button onClick={onClose}>
+        Close
+      </Button>
     </DialogActions>
   </Dialog>
 );

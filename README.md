@@ -4,15 +4,16 @@ This web app determines whether or not a number is prime.
 
 ## Setup
 The project uses the following:
-- Python 3.11
-- Django 4.0.1
-- Celery 5.2.3
+- Python 3
+- TypeScript
+- Django
+- Celery
 - NPM
-- React 17.0.2
-- Material-UI 5.3.1
-- PostgreSQL 14
-- Redis 7
-- Nginx 1.21
+- React
+- Material-UI
+- PostgreSQL
+- Redis
+- Nginx
 - Travis CI
 - Docker
 - Docker Compose
@@ -39,10 +40,11 @@ that contains the following environment variables:
 
 ```
 SECRET_KEY=somerandomstring
-
 DEBUG=False
+
 ALLOWED_HOSTS=localhost 127.0.0.1
 CORS_ALLOWED_ORIGIN_REGEXES=^https?://(localhost|127\.0\.0\.1)$
+CSRF_TRUSTED_ORIGINS=http://localhost http://127.0.0.1
 
 DB_ENGINE=django.db.backends.postgresql_psycopg2
 DB_NAME=primality_tester
@@ -51,7 +53,7 @@ DB_USER=postgres
 DB_PASSWORD=password
 DB_PORT=5432
 
-REDIS_URL=redis://redis:6379/1
+REDIS_URL=redis://redis:6379/0
 
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
@@ -72,7 +74,7 @@ For more information, see the Django 4.0 documentation.
 The ```frontend``` directory must also have a ```.env``` file 
 with the following variables:
 ```
-REACT_APP_API_URL=http://127.0.0.1/api/
+REACT_APP_API_URL=http://127.0.0.1
 ```
 The URL should be the endpoint of the backend server.
 

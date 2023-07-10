@@ -1,9 +1,14 @@
-import React, { FC } from 'react';
-import { Container, createTheme, CssBaseline, Theme, ThemeProvider } from '@mui/material';
+import { FC } from 'react';
+import {
+  Box,
+  createTheme,
+  CssBaseline,
+  Theme,
+  ThemeProvider
+} from '@mui/material';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import PrimalityTest from 'views/PrimalityTest';
-import Footer from 'components/Footer';
-import Error404 from 'views/Error404';
+import { Footer } from 'layouts';
+import { PageNotFoundPage, PrimalityTestPage } from 'pages';
 
 const App: FC = () => {
   const theme: Theme = createTheme({
@@ -17,14 +22,14 @@ const App: FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container sx={{ my: 5 }}>
+      <Box marginY={5}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={PrimalityTest} />
-            <Route exact path="*" component={Error404} />
+            <Route exact path="/" component={PrimalityTestPage} />
+            <Route exact path="*" component={PageNotFoundPage} />
           </Switch>
         </BrowserRouter>
-      </Container>
+      </Box>
       <Footer />
     </ThemeProvider>
   );
