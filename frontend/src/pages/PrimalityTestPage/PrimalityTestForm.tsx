@@ -18,13 +18,15 @@ import {
 import HelpIcon from '@mui/icons-material/Help';
 
 interface PrimalityTestFormProps {
-  handleSubmit: FormEventHandler,
+  handleSubmit: FormEventHandler
   openModal: MouseEventHandler
+  disabled: boolean
 };
 
 const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
   handleSubmit,
-  openModal
+  openModal,
+  disabled
 }) => {
   const [error, setError] = useState<boolean>(false);
   const [formChanged, setFormChanged] = useState<boolean>(false);
@@ -56,7 +58,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
         </Box>
       </Box>
       <Box component="form" onSubmit={handleSubmit}>
-        <FormControl fullWidth variant="outlined">
+        <FormControl fullWidth variant="outlined" disabled={disabled}>
           <TextField
             id="number"
             name="number"
@@ -74,7 +76,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           variant="contained"
           type="submit"
           size="large"
-          disabled={error || !formChanged}
+          disabled={error || !formChanged || disabled}
         >
           Submit
         </Button>

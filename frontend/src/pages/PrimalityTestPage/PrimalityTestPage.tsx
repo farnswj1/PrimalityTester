@@ -49,6 +49,7 @@ const PrimalityTestPage: FC = () => {
           <PrimalityTestForm
             handleSubmit={handleSubmit}
             openModal={openHelpModal}
+            disabled={loading}
           />
         </Box>
         <Box textAlign="center" marginY={5}>
