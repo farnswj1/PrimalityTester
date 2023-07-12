@@ -17,8 +17,8 @@ const PrimalityTestPage: FC = () => {
     setStatus(null);
     setResult(null);
 
-    const data = new FormData(event.currentTarget);
-    const query = new URLSearchParams(data as any).toString();
+    const data: FormData = new FormData(event.currentTarget);
+    const query: string = new URLSearchParams(data as any).toString();
     const url: string = `/api/primality_testing/?${query}`;
 
     APIService.get(url)
