@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button, Container, Paper, Typography } from '@mui/material';
-import { CustomGrow } from 'components';
+import { Box, Button, Container, Typography } from '@mui/material';
+import { CustomGrow, CustomPaper } from 'components';
 
 const PageNotFoundPage: FC = () => (
   <CustomGrow>
     <Container maxWidth="sm">
       <Box justifyContent="center" alignItems="center" textAlign="center">
         <Box marginBottom={3}>
-          <Paper square={false} sx={{ p: 2 }}>
+          <CustomPaper>
             <Typography variant="h5">
               Page Not Found
             </Typography>
             <Typography>
               Fun fact: 404 is not prime. Also, this page doesn't exist.
             </Typography>
-          </Paper>
+          </CustomPaper>
         </Box>
         <Box>
           <Link to="/">

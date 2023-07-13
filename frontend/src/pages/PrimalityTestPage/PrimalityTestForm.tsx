@@ -10,12 +10,12 @@ import {
   Button,
   FormControl,
   IconButton,
-  Paper,
   TextField,
   Tooltip,
   Typography
 } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
+import { CustomPaper } from 'components';
 
 interface PrimalityTestFormProps {
   handleSubmit: FormEventHandler
@@ -42,7 +42,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
   };
 
   return (
-    <Paper square={false} sx={{ p: 2 }}>
+    <CustomPaper>
       <Box display="flex" justifyContent="space-between">
         <Box>
           <Typography variant="h4">
@@ -81,7 +81,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           Submit
         </Button>
       </Box>
-    </Paper>
+    </CustomPaper>
   );
 }
 
