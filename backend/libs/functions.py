@@ -1,9 +1,10 @@
-from core.decorators import memoize
+from cache.redis.decorators import cache
 from math import sqrt
 
 
-@memoize(timeout=None)
-def sieve_of_eratosthenes(n: int) -> set[int]:
+@cache(timeout=None)
+async def sieve_of_eratosthenes(n: int) -> set[int]:
+    """Get a set of primes under n."""
     sieve = [True] * n
 
     sieve[0] = False
@@ -17,7 +18,8 @@ def sieve_of_eratosthenes(n: int) -> set[int]:
     return set(number for number, is_prime in enumerate(sieve) if is_prime)
 
 
-def miller_rabin(n: int) -> bool:
+async def miller_rabin(n: int) -> bool:
+    """Use the Miller-Rabin primality test to determine if a number is prime."""
     if n == 2 or n == 3:
         return True
     elif n % 2 == 0:
@@ -30,7 +32,7 @@ def miller_rabin(n: int) -> bool:
         m = m // 2
         t += 1
 
-    candidates = sieve_of_eratosthenes(100)
+    candidates = await sieve_of_eratosthenes(100)
 
     for number in candidates:
         v = pow(number, m, n)
@@ -47,14 +49,16 @@ def miller_rabin(n: int) -> bool:
 
                     if v == 1:
                         return False
+
     return True
 
 
-def is_prime(n: int) -> bool:
+async def is_prime(n: int) -> bool:
+    """Determine if the number is a prime or not."""
     if n < 2:
         return False
 
-    sieve_list = sieve_of_eratosthenes(1_000_000)
+    sieve_list = await sieve_of_eratosthenes(1_000_000)
 
     if n < 1_000_000:
         return n in sieve_list
@@ -63,4 +67,4 @@ def is_prime(n: int) -> bool:
         if n % prime == 0:
             return False
 
-    return miller_rabin(n)
+    return await miller_rabin(n)

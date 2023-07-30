@@ -3,6 +3,3 @@
 .env
 Dockerfile
 __pycache__/
-media/
-static/
-*.db

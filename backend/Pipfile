@@ -1,26 +1,23 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-
-[dev-packages]
-ipython = "==8.0.1"
-factory-boy = "==3.2.1"
-pytest-django = "==4.5.2"
+name = "pypi"
 
 [packages]
-django = "==4.0.1"
-djangorestframework = "==3.13.1"
-django-cors-headers = "==3.11.0"
-psycopg2 = "==2.9.3"
-celery = "==5.2.3"
-django-celery-beat = "==2.1.0"
-redis = "==4.1.2"
-hiredis = "==2.0.0"
-flower = "==1.2.0"
-uvicorn = {version = "==0.18.2", extras = ["standard"]}
-gunicorn = "==20.1.0"
-supervisor = "==4.2.4"
+fastapi = "==0.100.0"
+pydantic = "==2.1.1"
+pydantic-settings = "==2.0.2"
+python-dotenv = "==1.0.0"
+redis = {version = "==4.6.0", extras = ["hiredis"]}
+uvicorn = {version = "==0.23.1", extras = ["standard"]}
+gunicorn = "==21.1.0"
+supervisor = "==4.2.5"
+
+[dev-packages]
+pytest = "==7.4.0"
+ipython = "==8.14.0"
+httpx = "0.24.1"
+trio = "==0.22.2"
 
 [requires]
 python_version = "3.11"

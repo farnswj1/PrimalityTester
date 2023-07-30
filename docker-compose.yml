@@ -1,13 +1,5 @@
 version: "3.9"
 services:
-  postgres:
-    container_name: postgres
-    image: postgres:14
-    restart: always
-    env_file:
-      - ./postgres/.env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/:rw
   redis:
     container_name: redis
     image: redis:7
@@ -24,7 +16,6 @@ services:
     volumes:
       - backend_static:/opt/app/static/:rw
     depends_on:
-      - postgres
       - redis
   frontend:
     container_name: frontend
@@ -61,7 +52,6 @@ services:
     depends_on:
       - nginx
 volumes:
-  postgres_data:
   redis_data:
   backend_static:
   frontend_static:
