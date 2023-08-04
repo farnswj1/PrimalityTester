@@ -6,7 +6,7 @@ import {
   Theme,
   ThemeProvider
 } from '@mui/material';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer } from 'layouts';
 import { PageNotFoundPage, PrimalityTestPage } from 'pages';
 
@@ -24,10 +24,10 @@ const App: FC = () => {
       <CssBaseline />
       <Box marginY={5}>
         <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={PrimalityTestPage} />
-            <Route exact path="*" component={PageNotFoundPage} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<PrimalityTestPage />} />
+            <Route path="*" element={<PageNotFoundPage />} />
+          </Routes>
         </BrowserRouter>
       </Box>
       <Footer />

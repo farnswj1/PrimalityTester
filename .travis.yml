@@ -11,7 +11,7 @@ before_script:
   - docker-compose -f docker-compose.test.yml up -d --build
 script:
   - docker exec backend pytest
-  - docker exec frontend npm test --watchAll=false
+  - docker exec frontend npm test
   - docker exec nginx nginx -t
 after_script:
   - docker-compose down

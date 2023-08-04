@@ -32,7 +32,7 @@ REDIS_URL=redis://redis:6379/0
 The ```frontend``` directory must also have a ```.env``` file 
 with the following variables:
 ```
-REACT_APP_API_URL=http://127.0.0.1
+VITE_API_URL=http://127.0.0.1
 ```
 The URL should be the endpoint of the backend server.
 
