@@ -1,5 +1,5 @@
 # Primality Tester
-This web app determines whether or not a number is prime. 
+This web app determines whether or not a number is prime.
 
 ## Setup
 The project uses the following:
@@ -15,12 +15,12 @@ The project uses the following:
 - Docker
 - Docker Compose
 
-For additional information on project specifications, see 
-```backend/Pipfile``` for the backend server and 
+For additional information on project specifications, see
+```backend/Pipfile``` for the backend server and
 ```frontend/package.json``` for the frontend respectively.
 
 ### Backend
-In the ```backend``` directory, create a ```.env``` file 
+In the ```backend``` directory, create a ```.env``` file
 that contains the following environment variables:
 ```
 ALLOWED_HOSTS=localhost 127.0.0.1
@@ -29,7 +29,7 @@ REDIS_URL=redis://redis:6379/0
 ```
 
 ### Frontend
-The ```frontend``` directory must also have a ```.env``` file 
+The ```frontend``` directory must also have a ```.env``` file
 with the following variables:
 ```
 VITE_API_URL=http://127.0.0.1
@@ -37,7 +37,7 @@ VITE_API_URL=http://127.0.0.1
 The URL should be the endpoint of the backend server.
 
 ## Building
-The project uses Docker. Ensure Docker and Docker Compose are installed 
+The project uses Docker. Ensure Docker and Docker Compose are installed
 before continuing.
 
 To build, run ```docker compose build```

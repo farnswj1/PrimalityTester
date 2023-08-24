@@ -85,7 +85,7 @@ const PrimalityTestInfo: FC<PrimalityTestInfoProps> = ({
           which makes testing primes less than the input to be quick. In this case,
           we chose 1 million. We can test numbers larger than or equal to 1 million
           by checking if the number is divisible by any prime in the list. If not,
-          then we use the Miller-Rabin primality test, which uses all primes under 
+          then we use the Miller-Rabin primality test, which uses all primes under
           100 as the candidate primes. If the number passes all of these tests, then
           the number is considered to be prime.
         </DialogContentText>

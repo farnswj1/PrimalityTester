@@ -10,6 +10,7 @@ import {
   Button,
   FormControl,
   IconButton,
+  Stack,
   TextField,
   Tooltip,
   Typography
@@ -43,21 +44,22 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
 
   return (
     <CustomPaper>
-      <Box display="flex" justifyContent="space-between">
-        <Box>
-          <Typography variant="h4">
-            Is It Prime? 
-          </Typography>
-        </Box>   
-        <Box>
-          <Tooltip title="Click this icon for more information on primes.">
-            <IconButton onClick={openModal}>
-              <HelpIcon />
-            </IconButton>
-          </Tooltip>
-        </Box>
-      </Box>
-      <Box component="form" onSubmit={handleSubmit}>
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        marginBottom={3}
+      >
+        <Typography variant="h4">
+          Is It Prime?
+        </Typography>
+        <Tooltip title="Click this icon for more information on primes.">
+          <IconButton onClick={openModal}>
+            <HelpIcon />
+          </IconButton>
+        </Tooltip>
+      </Stack>
+      <Stack component="form" spacing={3} onSubmit={handleSubmit}>
         <FormControl fullWidth variant="outlined" disabled={disabled}>
           <TextField
             id="number"
@@ -65,22 +67,23 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
             label="Enter an integer greater than 1"
             multiline
             rows={8}
-            sx={{ my: 3 }}
             required
             InputLabelProps={{ required: false }}
             onChange={handleNumberChange}
             error={error}
           />
         </FormControl>
-        <Button
-          variant="contained"
-          type="submit"
-          size="large"
-          disabled={error || !formChanged || disabled}
-        >
-          Submit
-        </Button>
-      </Box>
+        <Box>
+          <Button
+            variant="contained"
+            type="submit"
+            size="large"
+            disabled={error || !formChanged || disabled}
+          >
+            Submit
+          </Button>
+        </Box>
+      </Stack>
     </CustomPaper>
   );
 }

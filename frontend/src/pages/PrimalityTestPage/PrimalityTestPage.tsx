@@ -45,13 +45,11 @@ const PrimalityTestPage: FC = () => {
   return (
     <CustomGrow>
       <Container maxWidth="sm">
-        <Box>
-          <PrimalityTestForm
-            handleSubmit={handleSubmit}
-            openModal={openHelpModal}
-            disabled={loading}
-          />
-        </Box>
+        <PrimalityTestForm
+          handleSubmit={handleSubmit}
+          openModal={openHelpModal}
+          disabled={loading}
+        />
         <Box textAlign="center" marginY={5}>
           {
             loading && (
@@ -80,12 +78,10 @@ const PrimalityTestPage: FC = () => {
             )
           }
         </Box>
-        <Box>
-          <PrimalityTestInfo
-            open={openModal}
-            onClose={closeHelpModal}
-          />
-        </Box>
+        <PrimalityTestInfo
+          open={openModal}
+          onClose={closeHelpModal}
+        />
       </Container>
     </CustomGrow>
   );
