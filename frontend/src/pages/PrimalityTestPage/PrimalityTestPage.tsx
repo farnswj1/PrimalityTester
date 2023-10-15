@@ -2,10 +2,12 @@ import { FC, FormEvent, useState } from 'react';
 import { Box, Container, LinearProgress, Typography } from '@mui/material';
 import { CustomGrow } from 'components';
 import { APIService } from 'services';
+import { setTitle } from 'utils';
 import PrimalityTestForm from './PrimalityTestForm';
 import PrimalityTestInfo from './PrimalityTestInfo';
 
 const PrimalityTestPage: FC = () => {
+  setTitle();
   const [loading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<number | null>(null);
   const [result, setResult] = useState<boolean | null>(null);
