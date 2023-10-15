@@ -1,30 +1,29 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Container, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { CustomGrow, CustomPaper } from 'components';
 
 const PageNotFoundPage: FC = () => (
   <CustomGrow>
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Stack
-        spacing={3}
         justifyContent="center"
         alignItems="center"
         textAlign="center"
       >
         <CustomPaper>
-          <Typography variant="h5">
+          <Typography variant="h4">
             Page Not Found
           </Typography>
-          <Typography>
-            Fun fact: 404 is not prime. Also, this page doesn't exist.
+          <Typography paragraph>
+            Fun fact: 404 is not prime. Also, it's a code for "this page doesn't exist".
           </Typography>
+          <Box marginTop={3}>
+            <Button component={Link} variant="contained" to="/">
+              Go Home
+            </Button>
+          </Box>
         </CustomPaper>
-        <Link to="/">
-          <Button variant="contained">
-            Go Home
-          </Button>
-        </Link>
       </Stack>
     </Container>
   </CustomGrow>
