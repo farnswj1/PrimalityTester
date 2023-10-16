@@ -12,6 +12,7 @@ The project uses the following:
 - Vite
 - Redis
 - Nginx
+- Certbot
 - Travis CI
 - Docker
 - Docker Compose
