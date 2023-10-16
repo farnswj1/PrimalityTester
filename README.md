@@ -9,6 +9,7 @@ The project uses the following:
 - NPM
 - React
 - Material-UI
+- Vite
 - Redis
 - Nginx
 - Travis CI
