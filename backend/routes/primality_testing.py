@@ -7,7 +7,7 @@ router = APIRouter(tags=['Primality Testing'])
 
 
 @router.get('/primality_testing/')
-async def about(number: int) -> Result:
+async def primality_testing(number: int) -> Result:
     """Determine if the number prime."""
     result = await is_prime(number)
     return {'result': result}
