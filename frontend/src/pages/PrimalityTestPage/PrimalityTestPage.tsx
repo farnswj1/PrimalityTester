@@ -66,6 +66,13 @@ const PrimalityTestPage: FC = () => {
             )
           }
           {
+            status === 429 && (
+              <Typography variant="h4" color="error">
+                Max limit exceeded! Please wait 1 minute.
+              </Typography>
+            )
+          }
+          {
             (status && status >= 500) && (
               <Typography variant="h4" color="error">
                 There is an issue with the server!

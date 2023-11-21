@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
+from fastapi_limiter import FastAPILimiter
 from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from contextlib import asynccontextmanager
 from cache.redis import redis
@@ -10,9 +11,9 @@ from config import settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await redis.ping()
+    await FastAPILimiter.init(redis)
     yield
-    await redis.close()
+    await FastAPILimiter.close()
 
 
 app = FastAPI(
