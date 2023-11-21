@@ -60,28 +60,28 @@ const PrimalityTestPage: FC = () => {
           }
           {
             status === 400 && (
-              <Typography variant="h4" color="error">
+              <Typography variant="h5" color="error">
                 Please enter a number.
               </Typography>
             )
           }
           {
             status === 429 && (
-              <Typography variant="h4" color="error">
+              <Typography variant="h5" color="error">
                 Max limit exceeded! Please wait 1 minute.
               </Typography>
             )
           }
           {
             (status && status >= 500) && (
-              <Typography variant="h4" color="error">
+              <Typography variant="h5" color="error">
                 There is an issue with the server!
               </Typography>
             )
           }
           {
             result !== null && (
-              <Typography variant="h4">
+              <Typography variant="h5">
                 {result ? 'Prime' : 'Not Prime'}
               </Typography>
             )
