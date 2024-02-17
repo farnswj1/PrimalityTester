@@ -4,21 +4,21 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "==0.100.0"
-fastapi-limiter = "==0.1.5"
-pydantic = "==2.1.1"
-pydantic-settings = "==2.0.2"
-python-dotenv = "==1.0.0"
-redis = {version = "==4.6.0", extras = ["hiredis"]}
-uvicorn = {version = "==0.23.1", extras = ["standard"]}
-gunicorn = "==21.1.0"
+fastapi = "==0.109.2"
+fastapi-limiter = "==0.1.6"
+pydantic = "==2.6.1"
+pydantic-settings = "==2.2.0"
+python-dotenv = "==1.0.1"
+redis = {version = "==5.0.1", extras = ["hiredis"]}
+uvicorn = {version = "==0.27.1", extras = ["standard"]}
+gunicorn = "==21.2.0"
 supervisor = "==4.2.5"
 
 [dev-packages]
-pytest = "==7.4.0"
-ipython = "==8.14.0"
-httpx = "0.24.1"
-trio = "==0.22.2"
+pytest = "==8.0.1"
+ipython = "==8.21.0"
+httpx = "0.26.0"
+trio = "==0.24.0"
 
 [requires]
-python_version = "3.11"
+python_version = "3.12"
