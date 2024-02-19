@@ -10,9 +10,9 @@ import {
 } from '@mui/material';
 
 interface PrimalityTestInfoProps {
-  open: boolean,
-  onClose: MouseEventHandler
-};
+  open: boolean;
+  onClose: MouseEventHandler;
+}
 
 const PrimalityTestInfo: FC<PrimalityTestInfoProps> = ({
   open,

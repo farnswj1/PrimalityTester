@@ -15,7 +15,7 @@ class EnvironmentSettingsSource(EnvSettingsSource):
         value: Any,
         value_is_complex: bool
     ) -> Any:
-        if field_name == 'ALLOWED_HOSTS':
+        if field.annotation == List[str]:
             return value.split()
 
         return super().prepare_field_value(

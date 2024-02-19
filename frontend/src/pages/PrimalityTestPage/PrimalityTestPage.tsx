@@ -25,7 +25,7 @@ const PrimalityTestPage: FC = () => {
 
     APIService.get(url)
       .then(response => {
-        setResult(response.data.result);
+        setResult(response.data);
         setStatus(response.status);
       })
       .catch(error => {

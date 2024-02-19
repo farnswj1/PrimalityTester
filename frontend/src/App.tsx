@@ -22,7 +22,7 @@ const App: FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box marginY={5}>
+      <Box component="main" marginY={5}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<PrimalityTestPage />} />

@@ -1,15 +1,8 @@
-import { FC, ReactElement } from 'react';
-import { Grow } from '@mui/material';
+import { FC } from 'react';
+import { Grow, GrowProps } from '@mui/material';
 
-interface CustomGrowProps {
-  children: ReactElement,
-  rest?: object
-};
-
-const CustomGrow: FC<CustomGrowProps> = ({ children, ...rest }) => (
-  <Grow in={true} timeout={1200} {...rest}>
-    {children}
-  </Grow>
+const CustomGrow: FC<GrowProps> = (props) => (
+  <Grow in={true} timeout={1200} {...props} />
 );
 
 export default CustomGrow;

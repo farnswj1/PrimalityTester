@@ -8,7 +8,6 @@ import {
 import {
   Box,
   Button,
-  FormControl,
   IconButton,
   Stack,
   TextField,
@@ -19,10 +18,10 @@ import HelpIcon from '@mui/icons-material/Help';
 import { CustomPaper } from 'components';
 
 interface PrimalityTestFormProps {
-  handleSubmit: FormEventHandler
-  openModal: MouseEventHandler
-  disabled: boolean
-};
+  handleSubmit: FormEventHandler;
+  openModal: MouseEventHandler;
+  disabled: boolean;
+}
 
 const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
   handleSubmit,
@@ -60,19 +59,20 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
         </Tooltip>
       </Stack>
       <Stack component="form" spacing={3} onSubmit={handleSubmit}>
-        <FormControl fullWidth variant="outlined" disabled={disabled}>
-          <TextField
-            id="number"
-            name="number"
-            label="Enter an integer greater than 1"
-            multiline
-            rows={8}
-            required
-            InputLabelProps={{ required: false }}
-            onChange={handleNumberChange}
-            error={error}
-          />
-        </FormControl>
+        <TextField
+          id="number"
+          name="number"
+          label="Enter an integer greater than 1"
+          variant="outlined"
+          rows={8}
+          InputLabelProps={{ required: false }}
+          onChange={handleNumberChange}
+          disabled={disabled}
+          error={error}
+          multiline
+          fullWidth
+          required
+        />
         <Box>
           <Button
             variant="contained"
@@ -86,6 +86,6 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
       </Stack>
     </CustomPaper>
   );
-}
+};
 
 export default PrimalityTestForm;
