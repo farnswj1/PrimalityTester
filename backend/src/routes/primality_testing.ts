@@ -14,13 +14,12 @@ router.get(
       return;
     }
 
-    const trimmedNumber = number.trim();
-    const cachedResult = await redis.get(trimmedNumber);
+    const cachedResult = await redis.get(number);
     let result = cachedResult === null ? null : JSON.parse(cachedResult) as boolean;
 
     if (result === null) {
-      result = isPrime(BigInt(trimmedNumber));
-      await redis.set(trimmedNumber, String(result), { EX: 3600 });
+      result = isPrime(BigInt(number));
+      await redis.set(number, String(result), { EX: 3600 });
     }
 
     response.status(200).json(result);
