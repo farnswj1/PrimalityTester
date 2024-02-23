@@ -7,19 +7,20 @@ const router = Router();
 router.get(
   '/api/primality_testing/',
   async (request: Request<{}, any, any, INumbers>, response: Response) => {
-    const number = request.query.number.trim();
+    const { number } = request.query;
 
     if (!validate(number)) {
       response.status(400).json('Please enter a positive integer!');
       return;
     }
 
-    const cachedResult = await redis.get(number);
+    const trimmedNumber = number.trim();
+    const cachedResult = await redis.get(trimmedNumber);
     let result = cachedResult === null ? null : JSON.parse(cachedResult) as boolean;
 
     if (result === null) {
-      result = isPrime(BigInt(number));
-      await redis.set(number, String(result), { EX: 3600 });
+      result = isPrime(BigInt(trimmedNumber));
+      await redis.set(trimmedNumber, String(result), { EX: 3600 });
     }
 
     response.status(200).json(result);
