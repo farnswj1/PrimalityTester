@@ -1,8 +1,5 @@
 # base image
-FROM python:3.12-slim-bullseye
-
-# set environment variables
-ENV PYTHONUNBUFFERED 1
+FROM node:20-alpine
 
 # expose port(s)
 EXPOSE 8000
@@ -10,11 +7,13 @@ EXPOSE 8000
 # set directory
 WORKDIR /opt/app
 
-# install dependencies and add application
-RUN pip install pipenv
-COPY Pipfile Pipfile.lock ./
-RUN pipenv install --system --deploy --ignore-pipfile
+# add application and install dependencies
+COPY package.json package-lock.json ./
+RUN npm install
 COPY . ./
 
-# run the app
-CMD ["supervisord", "-c", "supervisord.conf"]
+# run linting
+RUN npm run lint
+
+# run the server
+CMD ["npm", "start"]

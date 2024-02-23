@@ -3,9 +3,9 @@ This web app determines whether or not a number is prime.
 
 ## Setup
 The project uses the following:
-- Python 3
 - TypeScript
-- FastAPI
+- Node.js
+- Express
 - NPM
 - React
 - Material-UI
@@ -18,16 +18,15 @@ The project uses the following:
 - Docker Compose
 
 For additional information on project specifications, see
-```backend/Pipfile``` for the backend server and
+```backend/package.json``` for the backend server and
 ```frontend/package.json``` for the frontend respectively.
 
 ### Backend
 In the ```backend``` directory, create a ```.env``` file
 that contains the following environment variables:
 ```
-ALLOWED_HOSTS=localhost 127.0.0.1
-CORS_ALLOW_ORIGIN_REGEX=^https?://(localhost|127\.0\.0\.1)$
 REDIS_URL=redis://redis:6379/0
+PORT=8000
 ```
 
 ### Frontend

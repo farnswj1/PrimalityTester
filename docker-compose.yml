@@ -15,8 +15,6 @@ services:
     restart: always
     env_file:
       - ./backend/.env
-    volumes:
-      - backend_static:/opt/app/static/:rw
     networks:
       - public
       - private
@@ -45,7 +43,6 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - certbot_data:/var/www/certbot/:ro
       - ssl_certs:/etc/letsencrypt/:ro
-      - backend_static:/opt/backend/static/:ro
       - frontend_static:/opt/frontend/static/:ro
     networks:
       - public
@@ -64,7 +61,6 @@ services:
       - nginx
 volumes:
   redis_data:
-  backend_static:
   frontend_static:
   certbot_data:
   ssl_certs:

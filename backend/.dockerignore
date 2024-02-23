@@ -1,5 +1,6 @@
+dist
+node_modules
 .gitignore
 .dockerignore
-.env
+.env*
 Dockerfile
-__pycache__/
