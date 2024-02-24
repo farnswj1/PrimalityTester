@@ -5,7 +5,7 @@ import { INumber } from 'types';
 const router = Router();
 
 router.get(
-  '/api/primality_testing/',
+  '/primality_testing/',
   async (request: Request<{}, any, any, INumber>, response: Response) => {
     const { number } = request.query;
 
