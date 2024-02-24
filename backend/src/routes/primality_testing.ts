@@ -1,12 +1,12 @@
 import { Router, Request, Response } from 'express';
 import { isPrime, redis, validate } from 'libs';
-import { INumbers } from 'types';
+import { INumber } from 'types';
 
 const router = Router();
 
 router.get(
   '/api/primality_testing/',
-  async (request: Request<{}, any, any, INumbers>, response: Response) => {
+  async (request: Request<{}, any, any, INumber>, response: Response) => {
     const { number } = request.query;
 
     if (!validate(number)) {
