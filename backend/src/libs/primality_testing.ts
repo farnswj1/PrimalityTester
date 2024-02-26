@@ -4,7 +4,7 @@ const sieveOfEratosthenes = (n: number): Set<bigint> => {
   sieve[1] = false;
   const limit = Math.floor(Math.sqrt(n));
 
-  for (let i = 0; i <= limit; i++) {
+  for (let i = 2; i <= limit; i++) {
     if (sieve[i]) {
       for (let k = i * 2; k < n; k += i) {
         sieve[k] = false;
@@ -90,7 +90,7 @@ export const isPrime = (n: bigint): boolean => {
     return false;
   }
 
-  if (n < 1000000n) {
+  if (n < 1_000_000n) {
     return PRIMES_UNDER_1_MILLION.has(n);
   }
 
