@@ -19,7 +19,7 @@ router.get(
 
     if (result === null) {
       result = isPrime(BigInt(number));
-      await redis.set(number, String(result), { EX: 3600 });
+      await redis.set(number, String(result), { EX: 86400 });
     }
 
     response.status(200).json(result);
