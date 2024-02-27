@@ -25,6 +25,7 @@ For additional information on project specifications, see
 In the ```backend``` directory, create a ```.env``` file
 that contains the following environment variables:
 ```
+ALLOWED_ORIGINS=http://localhost http://127.0.0.1
 REDIS_URL=redis://redis:6379/0
 PORT=8000
 ```

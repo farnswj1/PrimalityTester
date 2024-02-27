@@ -4,10 +4,10 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { RateLimiter } from 'middleware';
 import Router from 'routes';
-import { PORT } from 'settings';
+import { ALLOWED_ORIGINS, PORT } from 'settings';
 
 const app: Express = express();
-app.use(cors());
+app.use(cors({ origin: ALLOWED_ORIGINS }));
 app.use(helmet());
 app.use(express.json());
 app.use(morgan('combined'));
