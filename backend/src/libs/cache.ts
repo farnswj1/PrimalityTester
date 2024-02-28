@@ -9,7 +9,7 @@ redis.connect();
 
 export const memoize = <P extends unknown[], T>(
   func: (...args: P) => T,
-  ex: number = 60
+  ex?: number
 ) => {
   const isAsync = func.constructor.name === 'AsyncFunction';
   return async (...args: P): Promise<T> => {
