@@ -1,6 +1,8 @@
 import { Router, Request, Response } from 'express';
-import { isPrime, redis, validate } from 'libs';
+import { isPrime, memoize, validate } from 'libs';
 import { INumber } from 'types';
+
+const isPrimeMemoized = memoize<boolean>(isPrime, 86400);
 
 const router = Router();
 
@@ -14,14 +16,7 @@ router.get(
       return;
     }
 
-    const cachedResult = await redis.get(number);
-    let result = cachedResult === null ? null : JSON.parse(cachedResult) as boolean;
-
-    if (result === null) {
-      result = isPrime(BigInt(number));
-      await redis.set(number, String(result), { EX: 86400 });
-    }
-
+    const result = await isPrimeMemoized(BigInt(number));
     response.status(200).json(result);
   }
 );
