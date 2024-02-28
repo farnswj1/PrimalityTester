@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { isPrime, memoize, validate } from 'libs';
 import { INumber } from 'types';
 
-const isPrimeMemoized = memoize<boolean>(isPrime, 86400);
+const isPrimeMemoized = memoize(isPrime, 86400);
 
 const router = Router();
 

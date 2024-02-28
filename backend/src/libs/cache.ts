@@ -7,8 +7,11 @@ redis.on('error', error => console.log('Redis Client Error', error));
 
 redis.connect();
 
-export const memoize = <T>(func: (...args: any) => T, ex: number = 60) => {
-  return async (...args: any): Promise<T> => {
+export const memoize = <P extends unknown[], T>(
+  func: (...args: P) => T,
+  ex: number = 60
+) => (
+  async (...args: P): Promise<T> => {
     const key = `${func.name}:${args.toString()}`;
     const cachedResult = await redis.get(key);
     let result = cachedResult !== null ? JSON.parse(cachedResult) as T : null;
@@ -24,5 +27,5 @@ export const memoize = <T>(func: (...args: any) => T, ex: number = 60) => {
     }
 
     return result;
-  };
-};
+  }
+);
