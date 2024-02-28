@@ -18,7 +18,8 @@ const RateLimiter = (rule: RateLimitRule) => {
     }
 
     if (requests > limit) {
-      return response.status(429).json('Too many requests!');
+      response.status(429).json('Too many requests!');
+      return;
     }
 
     next();
