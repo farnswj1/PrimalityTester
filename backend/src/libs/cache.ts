@@ -10,22 +10,20 @@ redis.connect();
 export const memoize = <P extends unknown[], T>(
   func: (...args: P) => T,
   ex: number = 60
-) => (
-  async (...args: P): Promise<T> => {
+) => {
+  const isAsync = func.constructor.name === 'AsyncFunction';
+  return async (...args: P): Promise<T> => {
     const key = `${func.name}:${args.toString()}`;
     const cachedResult = await redis.get(key);
-    let result = cachedResult !== null ? JSON.parse(cachedResult) as T : null;
+    let result: T;
 
-    if (result === null) {
-      if (func.constructor.name === 'AsyncFunction') {
-        result = await func(...args);
-      } else {
-        result = func(...args);
-      }
-
+    if (cachedResult === null) {
+      result = isAsync ? await func(...args) : func(...args);
       await redis.set(key, String(result), { EX: ex });
+    } else {
+      result = JSON.parse(cachedResult);
     }
 
     return result;
-  }
-);
+  };
+};
