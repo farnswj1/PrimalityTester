@@ -8,7 +8,7 @@ redis.on('error', error => console.log('Redis Client Error', error));
 redis.connect();
 
 export const memoize = <P extends unknown[], T>(
-  func: (...args: P) => T,
+  func: (...args: P) => T | Promise<T>,
   ex?: number
 ) => {
   const isAsync = func.constructor.name === 'AsyncFunction';
@@ -18,7 +18,7 @@ export const memoize = <P extends unknown[], T>(
     let result: T;
 
     if (cachedResult === null) {
-      result = isAsync ? await func(...args) : func(...args);
+      result = isAsync ? await func(...args) : func(...args) as T;
       await redis.set(key, String(result), { EX: ex });
     } else {
       result = JSON.parse(cachedResult);
