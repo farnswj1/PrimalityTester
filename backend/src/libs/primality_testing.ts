@@ -1,3 +1,5 @@
+import { modPow, sqrt } from './bigmath';
+
 const sieveOfEratosthenes = (n: number): Set<bigint> => {
   const sieve = Array<boolean>(n).fill(true);
   sieve[0] = false;
@@ -25,26 +27,6 @@ const sieveOfEratosthenes = (n: number): Set<bigint> => {
 
 const PRIMES_UNDER_1_MILLION = sieveOfEratosthenes(1_000_000);
 const PRIMES_UNDER_50 = sieveOfEratosthenes(50);
-
-const modPow = (base: bigint, exp: bigint, mod: bigint): bigint => {
-  let result = 1n;
-  base %= mod;
-
-  if (base === 0n) {
-    return 0n;
-  }
-
-  while (exp > 0n) {
-    if (exp & 1n) {
-      result = (result * base) % mod;
-    }
-
-    exp >>= 1n;
-    base = (base * base) % mod;
-  }
-
-  return result;
-}
 
 const millerRabin = (n: bigint): boolean => {
   if (n === 2n || n === 3n) {
@@ -94,8 +76,12 @@ export const isPrime = (n: bigint): boolean => {
     return PRIMES_UNDER_1_MILLION.has(n);
   }
 
+  const root = sqrt(n);
+
   for (const prime of PRIMES_UNDER_1_MILLION) {
-    if (n % prime === 0n) {
+    if (prime > root) {
+      break;
+    } else if (n % prime === 0n) {
       return false;
     }
   }
