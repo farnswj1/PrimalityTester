@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import PrimalityTestingRouter from './primality_testing';
+import PrimalityTestingRouter from './primalitytesting';
 
 const router = Router();
 router.use(PrimalityTestingRouter);

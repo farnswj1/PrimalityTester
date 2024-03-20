@@ -7,7 +7,7 @@ interface RateLimitRule {
   limit: number;
 }
 
-const RateLimiter = (rule: RateLimitRule) => {
+const ratelimiter = (rule: RateLimitRule) => {
   const { endpoint, time, limit } = rule;
   return async (request: Request, response: Response, next: NextFunction) => {
     const key = `${endpoint}:${request.ip}`;
@@ -26,4 +26,4 @@ const RateLimiter = (rule: RateLimitRule) => {
   };
 };
 
-export default RateLimiter;
+export default ratelimiter;

@@ -1,1 +1,1 @@
-export { default as RateLimiter } from './rate_limiter';
+export { default as ratelimiter } from './ratelimiter';
