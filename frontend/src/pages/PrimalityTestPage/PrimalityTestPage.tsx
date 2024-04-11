@@ -20,7 +20,7 @@ const PrimalityTestPage: FC = () => {
     setResult(null);
 
     const data: FormData = new FormData(event.currentTarget);
-    const params: URLSearchParams = new URLSearchParams(data as any);
+    const params: URLSearchParams = new URLSearchParams(data as unknown as Record<string, string>);
     params.set('number', params.get('number')!.trim());
 
     const query: string = params.toString();
