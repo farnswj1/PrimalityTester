@@ -2,6 +2,16 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS!.split(' ');
-export const REDIS_URL = process.env.REDIS_URL!;
-export const PORT = parseInt(process.env.PORT ?? '8000', 10);
+const getEnv = (key: string, required: boolean = true): string => {
+  const value = process.env[key];
+
+  if (!value && required) {
+    throw new Error(`Environment variable ${key} is required but not defined.`);
+  }
+
+  return value ?? '';
+};
+
+export const ALLOWED_ORIGINS = getEnv('ALLOWED_ORIGINS').split(' ');
+export const REDIS_URL = getEnv('REDIS_URL');
+export const PORT = parseInt(getEnv('PORT', false) || '8000', 10);
