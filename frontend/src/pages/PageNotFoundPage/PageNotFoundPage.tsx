@@ -19,7 +19,7 @@ const PageNotFoundPage: FC = () => {
             <Typography variant="h4">
               Page Not Found
             </Typography>
-            <Typography paragraph marginBottom={3}>
+            <Typography component="p" marginBottom={3}>
               Fun fact: 404 is not prime. Also, it's a code for "this page doesn't exist".
             </Typography>
             <Button component={Link} variant="contained" to="/">

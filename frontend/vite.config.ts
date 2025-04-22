@@ -10,6 +10,9 @@ export default defineConfig({
     react(),
     tsConfigPaths()
   ],
+  build: {
+    chunkSizeWarningLimit: 1024
+  },
   test: {
     globals: true,
     environment: 'jsdom'

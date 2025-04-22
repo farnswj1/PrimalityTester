@@ -1,5 +1,6 @@
 import { FC, FormEvent, useState } from 'react';
 import { Box, Container, LinearProgress, Typography } from '@mui/material';
+import { AxiosResponse, isAxiosError } from 'axios';
 import { CustomGrow } from 'components';
 import { APIService } from 'services';
 import { setTitle } from 'utils';
@@ -26,13 +27,17 @@ const PrimalityTestPage: FC = () => {
     const query: string = params.toString();
     const url: string = `/api/primality_testing/?${query}`;
 
-    APIService.get(url)
+    APIService.get<boolean, AxiosResponse<boolean>>(url)
       .then(response => {
         setResult(response.data);
         setStatus(response.status);
       })
       .catch(error => {
-        setStatus(error.response.status);
+        if (isAxiosError<string>(error) && error.response) {
+          setStatus(error.response.status);
+        } else {
+          setStatus(500);
+        }
       })
       .finally(() => {
         setLoading(false);

@@ -10,7 +10,7 @@ RUN npm install
 COPY . ./
 
 # setup the build
-RUN npm run build
+RUN npm run lint && npm run build
 
 # final image
 FROM alpine
