@@ -1,3 +1,9 @@
+/**
+ * Calculates the square root of a given value.
+ * @param value - The value to be square rooted.
+ * @returns The square root of the given value.
+ * @throws {Error} If the value is negative.
+ */
 export const sqrt = (value: bigint): bigint => {
   if (value < 0n) {
     throw new Error('Square root of negative numbers is not supported!');
@@ -30,6 +36,13 @@ export const sqrt = (value: bigint): bigint => {
   return x0;
 };
 
+/**
+ * Calculates the modular exponentiation of `base` raised to the power of `exp` modulo `mod`.
+ * @param base - The base value.
+ * @param exp - The exponent.
+ * @param mod - The modulus.
+ * @returns The result of the modular exponentiation.
+ */
 export const modPow = (base: bigint, exp: bigint, mod: bigint): bigint => {
   let result = 1n;
   base %= mod;
@@ -48,4 +61,4 @@ export const modPow = (base: bigint, exp: bigint, mod: bigint): bigint => {
   }
 
   return result;
-}
+};

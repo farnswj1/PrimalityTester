@@ -7,6 +7,11 @@ interface RateLimitRule {
   limit: number;
 }
 
+/**
+ * Rate limiter middleware to limit the number of requests to a specific endpoint.
+ * @param rule - The rate limit rule containing the endpoint, time, and limit.
+ * @returns Middleware function to be used in Express routes.
+ */
 const ratelimiter = (rule: RateLimitRule) => {
   const { endpoint, time, limit } = rule;
   return async (request: Request, response: Response, next: NextFunction) => {

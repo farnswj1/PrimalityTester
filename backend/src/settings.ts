@@ -2,6 +2,15 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+/**
+ * Retrieves the value of an environment variable.
+ * If the variable is not defined and `required` is true, an error is thrown.
+ * If the variable is not defined and `required` is false, an empty string is returned.
+ * @param key - Environment variable key.
+ * @param required - Indicates if the variable is required.
+ * @returns The value of the environment variable.
+ * @throws If the variable is required but not defined.
+ */
 const getEnv = (key: string, required: boolean = true): string => {
   const value = process.env[key];
 

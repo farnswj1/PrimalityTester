@@ -1,5 +1,10 @@
 import { modPow, sqrt } from './bigmath';
 
+/**
+ * Sieve of Eratosthenes algorithm to find all prime numbers up to a given limit.
+ * @param n - The upper limit (exclusive) for finding prime numbers.
+ * @returns A Set containing all prime numbers less than n.
+ */
 const sieveOfEratosthenes = (n: number): Set<bigint> => {
   const sieve = Array<boolean>(n).fill(true);
   sieve[0] = false;
@@ -28,6 +33,11 @@ const sieveOfEratosthenes = (n: number): Set<bigint> => {
 const PRIMES_UNDER_1_MILLION = sieveOfEratosthenes(1_000_000);
 const PRIMES_UNDER_50 = sieveOfEratosthenes(50);
 
+/**
+ * Miller-Rabin primality test to check if a number is prime.
+ * @param n - The number to be tested for primality.
+ * @returns True if `n` is probably prime, false otherwise.
+ */
 const millerRabin = (n: bigint): boolean => {
   if (n === 2n || n === 3n) {
     return true;
@@ -67,6 +77,11 @@ const millerRabin = (n: bigint): boolean => {
   return true;
 };
 
+/**
+ * Checks if a given number is prime.
+ * @param n - The number to be checked for primality.
+ * @returns True if `n` is prime, false otherwise.
+ */
 export const isPrime = (n: bigint): boolean => {
   if (n < 2n) {
     return false;

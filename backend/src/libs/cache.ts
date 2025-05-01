@@ -5,6 +5,12 @@ export const redis = createClient({ url: REDIS_URL });
 redis.on('error', error => console.log('Redis Client Error', error));
 redis.connect();
 
+/**
+ * Memoizes a function's result based on its arguments.
+ * @param func - The function to be memoized.
+ * @param options - Options for setting the cache expiration.
+ * @returns A memoized version of the input function.
+ */
 export const memoize = <P extends unknown[], T>(
   func: (...args: P) => T | Promise<T>,
   options?: SetOptions
