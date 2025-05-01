@@ -10,7 +10,7 @@ interface RateLimitRule {
 const ratelimiter = (rule: RateLimitRule) => {
   const { endpoint, time, limit } = rule;
   return async (request: Request, response: Response, next: NextFunction) => {
-    const key = `${endpoint}:${request.ip}`;
+    const key = `ratelimiter:${endpoint}:${request.ip}`;
     const requests = await redis.incr(key);
 
     if (requests === 1) {

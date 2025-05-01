@@ -9,7 +9,7 @@ export const memoize = <P extends unknown[], T>(
   func: (...args: P) => T | Promise<T>,
   options?: SetOptions
 ) => async (...args: P): Promise<T> => {
-  const key = `${func.name}:${args.toString()}`;
+  const key = `memoize:${func.name}:${args.toString()}`;
   const cachedResult = await redis.get(key);
   let result: T;
 
