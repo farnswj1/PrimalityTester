@@ -28,8 +28,8 @@ interface RateLimitRule {
 }
 
 /**
- * Rate limiter middleware to limit the number of requests to a specific endpoint.
- * @param rule - The rate limit rule containing the endpoint, time, and limit.
+ * Rate limiter middleware to limit the number of requests to a specific namespace.
+ * @param rule - The rate limit rule containing the namespace, time, and limit.
  * @returns Middleware function to be used in Express routes.
  */
 const ratelimiter = (rule: RateLimitRule) => {
