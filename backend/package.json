@@ -2,7 +2,8 @@
   "scripts": {
     "start": "tsx src",
     "dev": "tsx watch src",
-    "lint": "tsc"
+    "lint": "tsc",
+    "test": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -15,8 +16,12 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
+    "@types/jest": "^29.5.14",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.14.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   }
