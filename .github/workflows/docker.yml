@@ -26,12 +26,23 @@ jobs:
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+      - name: Create backend environment file
+        if: ${{ matrix.context == 'backend' }}
+        run: echo "${{ secrets.BACKEND_ENV_FILE }}" > backend/.env
       - name: Create frontend environment file
         if: ${{ matrix.context == 'frontend' }}
         run: echo "${{ secrets.FRONTEND_ENV_FILE }}" > frontend/.env
-      - name: Build and push
+      - name: Build image
         uses: docker/build-push-action@v6
         with:
           context: ${{ matrix.context }}
-          push: true
           tags: ${{ matrix.tags }}
+      - name: Test backend image
+        if: ${{ matrix.context == 'backend' }}
+        run: docker run --env-file backend/.env --network host --rm ${{ matrix.tags }} npm test
+      - name: Push image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.context }}
+          tags: ${{ matrix.tags }}
+          push: true
