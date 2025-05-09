@@ -37,6 +37,7 @@ jobs:
         with:
           context: ${{ matrix.context }}
           tags: ${{ matrix.tags }}
+          load: true
       - name: Test backend image
         if: ${{ matrix.context == 'backend' }}
         run: docker run --env-file backend/.env --network host --rm ${{ matrix.tags }} npm test
