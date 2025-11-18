@@ -1,0 +1,9 @@
+**.env*
+**.gitignore
+**node_modules
+.dockerignore
+.github
+Dockerfile
+backend/static
+frontend/dist
+!frontend/.env
