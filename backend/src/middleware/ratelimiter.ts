@@ -32,9 +32,8 @@ interface RateLimitRule {
  * @param rule - The rate limit rule containing the namespace, time, and limit.
  * @returns Middleware function to be used in Express routes.
  */
-const ratelimiter = (rule: RateLimitRule) => {
-  const { namespace, time, limit } = rule;
-  return async (request: Request, response: Response, next: NextFunction) => {
+const ratelimiter = ({ namespace, time, limit }: RateLimitRule) => (
+  async (request: Request, response: Response, next: NextFunction) => {
     const key = `ratelimiter:${namespace}:${request.ip}`;
     const requests = await redis.incr(key);
 
@@ -48,7 +47,7 @@ const ratelimiter = (rule: RateLimitRule) => {
     }
 
     next();
-  };
-};
+  }
+);
 
 export default ratelimiter;
