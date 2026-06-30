@@ -1,9 +1,9 @@
 import { type FC, type SubmitEvent, useState } from "react";
-import { Box, Container, LinearProgress, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import { APIService } from "~/services";
+import { useFetch } from "~/hooks";
 import PrimalityTestForm from "./PrimalityTestForm";
 import PrimalityTestInfo from "./PrimalityTestInfo";
-import { useFetch } from "~/hooks";
 
 const getAlertMessage = (status: number | null): string | null => {
   switch (status) {
@@ -52,28 +52,9 @@ const PrimalityTestPage: FC = () => {
         handleSubmit={handleSubmit}
         openModal={openHelpModal}
         disabled={loading}
+        result={result}
+        errorMessage={alertMessage}
       />
-      <Box sx={{ textAlign: "center", marginY: 5 }}>
-        {
-          loading && (
-            <LinearProgress color="info" />
-          )
-        }
-        {
-          alertMessage && (
-            <Typography variant="h5" color="error">
-              {alertMessage}
-            </Typography>
-          )
-        }
-        {
-          result !== null && (
-            <Typography variant="h5">
-              {result ? "Prime" : "Not Prime"}
-            </Typography>
-          )
-        }
-      </Box>
       <PrimalityTestInfo
         open={openModal}
         onClose={closeHelpModal}

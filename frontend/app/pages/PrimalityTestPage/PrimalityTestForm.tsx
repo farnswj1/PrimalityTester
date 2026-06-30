@@ -6,8 +6,8 @@ import {
   useState
 } from "react";
 import {
-  Box,
   Button,
+  CircularProgress,
   IconButton,
   Stack,
   TextField,
@@ -21,12 +21,16 @@ interface PrimalityTestFormProps {
   handleSubmit: SubmitEventHandler<HTMLFormElement>;
   openModal: MouseEventHandler<HTMLButtonElement>;
   disabled: boolean;
+  result: boolean | null;
+  errorMessage: string | null;
 }
 
 const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
   handleSubmit,
   openModal,
-  disabled
+  disabled,
+  result,
+  errorMessage
 }) => {
   const [error, setError] = useState<boolean>(false);
   const [formChanged, setFormChanged] = useState<boolean>(false);
@@ -75,7 +79,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           fullWidth
           required
         />
-        <Box>
+        <Stack direction="row" spacing={3} sx={{ alignItems: "center" }}>
           <Button
             variant="contained"
             type="submit"
@@ -84,7 +88,26 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           >
             Submit
           </Button>
-        </Box>
+          {
+            disabled && (
+              <CircularProgress size={24} color="info" aria-label="Loading..." />
+            )
+          }
+          {
+            errorMessage && (
+              <Typography variant="body1" color="error">
+                {errorMessage}
+              </Typography>
+            )
+          }
+          {
+            result !== null && (
+              <Typography variant="h6">
+                {result ? "Prime" : "Not Prime"}
+              </Typography>
+            )
+          }
+        </Stack>
       </Stack>
     </CustomPaper>
   );
