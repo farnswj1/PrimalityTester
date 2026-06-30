@@ -1,9 +1,9 @@
 import {
   type ChangeEvent,
   type FC,
-  type SubmitEventHandler,
   type MouseEventHandler,
-  useState
+  useState,
+  type SubmitEvent
 } from "react";
 import {
   Button,
@@ -18,27 +18,35 @@ import HelpIcon from "@mui/icons-material/Help";
 import { CustomPaper } from "~/components";
 
 interface PrimalityTestFormProps {
-  handleSubmit: SubmitEventHandler<HTMLFormElement>;
   openModal: MouseEventHandler<HTMLButtonElement>;
+  onSubmit: (number: string) => void;
   disabled: boolean;
   result: boolean | null;
   errorMessage: string | null;
 }
 
+const INTEGER_REGEX: RegExp = /^([2-9]|[1-9][0-9]+)$/;
+
 const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
-  handleSubmit,
   openModal,
+  onSubmit,
   disabled,
   result,
   errorMessage
 }) => {
+  const [number, setNumber] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
   const [formChanged, setFormChanged] = useState<boolean>(false);
 
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    onSubmit(number);
+  };
+
   const handleNumberChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const number: string = event.target.value.trim();
-    const intRegex: RegExp = /^([2-9]|[1-9][0-9]+)$/;
-    setError(!intRegex.test(number));
+    setNumber(number);
+    setError(!INTEGER_REGEX.test(number));
 
     if (!formChanged) {
       setFormChanged(true);
@@ -72,6 +80,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           variant="outlined"
           rows={8}
           slotProps={{ inputLabel: { required: false }}}
+          value={number}
           onChange={handleNumberChange}
           disabled={disabled}
           error={error}

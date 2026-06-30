@@ -1,4 +1,4 @@
-import { type FC, type SubmitEvent, useState } from "react";
+import { type FC, useState } from "react";
 import { Container } from "@mui/material";
 import { APIService } from "~/services";
 import { useFetch } from "~/hooks";
@@ -24,12 +24,8 @@ const PrimalityTestPage: FC = () => {
   const [{ loading, status, data: result }, dispatch] = useFetch<boolean>();
   const alertMessage = getAlertMessage(status);
 
-  const handleSubmit = (event: SubmitEvent<HTMLFormElement>): void => {
-    event.preventDefault();
+  const handleSubmit = (number: string): void => {
     dispatch({ type: "pending" });
-
-    const data: FormData = new FormData(event.currentTarget);
-    const number: string = data.get("number") as string;
 
     APIService.isPrime(BigInt(number))
       .then((response) => dispatch({ type: "result", response }))
@@ -47,8 +43,8 @@ const PrimalityTestPage: FC = () => {
   return (
     <Container maxWidth="sm">
       <PrimalityTestForm
-        handleSubmit={handleSubmit}
         openModal={openHelpModal}
+        onSubmit={handleSubmit}
         disabled={loading}
         result={result}
         errorMessage={alertMessage}
