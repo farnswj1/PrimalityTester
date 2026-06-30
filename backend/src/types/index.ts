@@ -1,1 +1,1 @@
-export type { default as INumber } from './INumber';
+export type { default as INumber } from "./INumber";

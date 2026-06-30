@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -18,9 +18,9 @@ const getEnv = (key: string, required: boolean = true): string => {
     throw new Error(`Environment variable ${key} is required but not defined.`);
   }
 
-  return value ?? '';
+  return value ?? "";
 };
 
-export const ALLOWED_ORIGINS = getEnv('ALLOWED_ORIGINS').split(' ');
-export const REDIS_URL = getEnv('REDIS_URL');
-export const PORT = parseInt(getEnv('PORT', false) || '8000', 10);
+export const ALLOWED_ORIGINS = getEnv("ALLOWED_ORIGINS").split(" ");
+export const REDIS_URL = getEnv("REDIS_URL");
+export const PORT = parseInt(getEnv("PORT", false) || "8000", 10);

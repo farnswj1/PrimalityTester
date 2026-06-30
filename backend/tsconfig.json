@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "module": "ES2020",
-    "target": "ESNext",
+    "types": ["node", "jest"],
+    "module": "NodeNext",
+    "target": "ES2022",
     "strict": true,
     "noImplicitAny": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "baseUrl": "src",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }

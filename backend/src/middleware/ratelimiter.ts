@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
-import { redis } from 'libs';
+import { NextFunction, Request, Response } from "express";
+import { redis } from "~/libs";
 
 /**
  * Interface to define the rate limit rules.
@@ -9,7 +9,7 @@ interface RateLimitRule {
    * The endpoint or namespace for which the rate limit applies.
    * This is used to differentiate between different rate limits.
    * For example, you might have different limits for different APIs.
-   * @example 'api'
+   * @example "api"
    */
   namespace: string;
   /**
@@ -42,7 +42,7 @@ const ratelimiter = ({ namespace, time, limit }: RateLimitRule) => (
     }
 
     if (requests > limit) {
-      response.status(429).json('Too many requests!');
+      response.status(429).json("Too many requests!");
       return;
     }
 

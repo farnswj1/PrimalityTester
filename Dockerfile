@@ -1,5 +1,5 @@
 # frontend image
-FROM node:22-slim AS frontend_build
+FROM node:26.4.0-slim AS frontend_build
 
 # set directory
 WORKDIR /opt/app
@@ -13,7 +13,7 @@ COPY frontend ./
 RUN npm run lint && npm run build
 
 # backend image
-FROM node:22-slim
+FROM node:26.4.0-slim
 
 # expose port(s)
 EXPOSE 8000
@@ -27,7 +27,7 @@ RUN npm ci
 COPY backend ./
 
 # copy build from frontend
-COPY --from=frontend_build /opt/app/dist ./src/static
+COPY --from=frontend_build /opt/app/build/client ./src/static
 
 # run linting
 RUN npm run lint

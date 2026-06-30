@@ -1,8 +1,8 @@
-import { createClient, SetOptions } from 'redis';
-import { REDIS_URL } from 'settings';
+import { createClient, SetOptions } from "redis";
+import { REDIS_URL } from "~/settings";
 
 export const redis = createClient({ url: REDIS_URL });
-redis.on('error', error => console.log('Redis Client Error', error));
+redis.on("error", error => console.log("Redis Client Error", error));
 
 /**
  * Memoizes a function's result based on its arguments.

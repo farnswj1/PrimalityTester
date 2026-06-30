@@ -6,7 +6,7 @@
  */
 export const sqrt = (value: bigint): bigint => {
   if (value < 0n) {
-    throw new Error('Square root of negative numbers is not supported!');
+    throw new Error("Square root of negative numbers is not supported!");
   } else if (value < 2n) {
     return value;
   } else if (value < 16n) {

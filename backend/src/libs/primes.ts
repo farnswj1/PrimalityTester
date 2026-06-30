@@ -1,4 +1,4 @@
-import { modPow, sqrt } from './bigmath';
+import { modPow, sqrt } from "./bigmath";
 
 /**
  * Sieve of Eratosthenes algorithm to find all prime numbers up to a given limit.
