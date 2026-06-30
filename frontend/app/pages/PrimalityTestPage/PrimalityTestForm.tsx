@@ -29,8 +29,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
 }) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [number, setNumber] = useState<string>("");
-  const [error, setError] = useState<boolean>(false);
-  const [formChanged, setFormChanged] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
   const openHelpModal = (): void => {
     setOpenModal(true);
@@ -48,11 +47,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
   const handleNumberChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const number: string = event.target.value.trim();
     setNumber(number);
-    setError(!INTEGER_REGEX.test(number));
-
-    if (!formChanged) {
-      setFormChanged(true);
-    }
+    setIsError(!INTEGER_REGEX.test(number));
   };
 
   return (
@@ -85,7 +80,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           value={number}
           onChange={handleNumberChange}
           disabled={disabled}
-          error={error}
+          error={isError}
           multiline
           fullWidth
           required
@@ -95,7 +90,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
             variant="contained"
             type="submit"
             size="large"
-            disabled={error || !formChanged || disabled}
+            disabled={isError || disabled || number.length === 0}
           >
             Submit
           </Button>
