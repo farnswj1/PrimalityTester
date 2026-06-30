@@ -1,8 +1,12 @@
 import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig } from "vitest/config";
+import babel from "@rolldown/plugin-babel";
 
 export default defineConfig({
-  plugins: [reactRouter()],
+  plugins: [
+    reactRouter(),
+    babel({ plugins: ["babel-plugin-react-compiler"] })
+  ],
   resolve: {
     tsconfigPaths: true,
   },
