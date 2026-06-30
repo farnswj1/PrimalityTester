@@ -29,11 +29,9 @@ const PrimalityTestPage: FC = () => {
     dispatch({ type: "pending" });
 
     const data: FormData = new FormData(event.currentTarget);
-    const params: URLSearchParams = new URLSearchParams(
-      data as unknown as Record<string, string>
-    );
+    const number: string = data.get("number") as string;
 
-    APIService.isPrime(Number(params.get("number")!.trim()))
+    APIService.isPrime(BigInt(number))
       .then((response) => dispatch({ type: "result", response }))
       .catch((error: unknown) => dispatch({ type: "error", error }));
   };

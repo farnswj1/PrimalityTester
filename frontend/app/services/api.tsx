@@ -8,8 +8,8 @@ export default class APIService {
     }
   });
 
-  public static async isPrime(number: number): Promise<AxiosResponse<boolean>> {
-    const url = `/api/primality_testing/?number=${number}`;
+  public static async isPrime(number: bigint): Promise<AxiosResponse<boolean>> {
+    const url = `/api/primality_testing/?number=${number.toString()}`;
     return await this.instance.get<boolean>(url);
   }
 }
