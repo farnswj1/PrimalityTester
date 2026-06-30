@@ -55,7 +55,7 @@ const fetchReducer = <T,>(state: State<T>, action: Action<T>): State<T> => {
     }
     case ERROR: {
       const { error } = action;
-      const status = (isAxiosError(error) && error.response)
+      const status: number = (isAxiosError(error) && error.response)
         ? error.response.status
         : 500;
       return { loading: false, status, data: null };
