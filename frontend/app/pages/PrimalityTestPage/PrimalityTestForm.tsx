@@ -52,10 +52,10 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
         sx={{
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: 3,
+          marginBottom: 2,
         }}
       >
-        <Typography variant="h4">
+        <Typography variant="h5">
           Is It Prime?
         </Typography>
         <Tooltip title="Click this icon for more information on primes.">
@@ -64,7 +64,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           </IconButton>
         </Tooltip>
       </Stack>
-      <Stack component="form" spacing={3} onSubmit={handleSubmit}>
+      <Stack component="form" spacing={2} onSubmit={handleSubmit}>
         <TextField
           id="number"
           name="number"
@@ -79,7 +79,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           fullWidth
           required
         />
-        <Stack direction="row" spacing={3} sx={{ alignItems: "center" }}>
+        <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
           <Button
             variant="contained"
             type="submit"

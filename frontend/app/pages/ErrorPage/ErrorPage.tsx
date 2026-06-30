@@ -13,10 +13,10 @@ const ErrorPage: FC = () => (
       }}
     >
       <CustomPaper>
-        <Typography variant="h4">
+        <Typography variant="h5" sx={{ marginBottom: 2 }}>
           Oops!
         </Typography>
-        <Typography component="p" sx={{ marginBottom: 3 }}>
+        <Typography component="p" sx={{ marginBottom: 2 }}>
           Looks like something went wrong.
         </Typography>
         <Button component={Link} variant="contained" to="/">

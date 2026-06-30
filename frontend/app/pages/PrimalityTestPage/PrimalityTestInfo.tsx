@@ -26,7 +26,7 @@ const PrimalityTestInfo: FC<PrimalityTestInfoProps> = ({
     aria-describedby="primality-test-info"
   >
     <DialogContent>
-      <Stack direction="column" spacing={3}>
+      <Stack direction="column" spacing={2}>
         <Box>
           <DialogContentText variant="h5">
             What is a prime?
@@ -56,7 +56,7 @@ const PrimalityTestInfo: FC<PrimalityTestInfoProps> = ({
           <DialogContentText variant="h5">
             How do we check if it's prime?
           </DialogContentText>
-          <DialogContentText sx={{ marginBottom: 3 }}>
+          <DialogContentText sx={{ marginBottom: 2 }}>
             One such way is to exhaustively check every number between 1 and itself
             (non-inclusive) to see if any of them divide the number. If any do, then
             it is not prime, or composite. While this is guaranteed to work, it is

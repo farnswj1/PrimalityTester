@@ -13,10 +13,10 @@ const PageNotFoundPage: FC = () => (
       }}
     >
       <CustomPaper>
-        <Typography variant="h4">
+        <Typography variant="h5" sx={{ marginBottom: 2 }}>
           Page Not Found
         </Typography>
-        <Typography component="p" sx={{ marginBottom: 3 }}>
+        <Typography component="p" sx={{ marginBottom: 2 }}>
           Fun fact: 404 is not prime. Also, it's a code for "this page doesn't exist".
         </Typography>
         <Button component={Link} variant="contained" to="/">
