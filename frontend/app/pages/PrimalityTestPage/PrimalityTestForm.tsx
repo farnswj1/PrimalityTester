@@ -1,10 +1,4 @@
-import {
-  type ChangeEvent,
-  type FC,
-  type MouseEventHandler,
-  useState,
-  type SubmitEvent
-} from "react";
+import { type ChangeEvent, type FC, useState, type SubmitEvent } from "react";
 import {
   Button,
   CircularProgress,
@@ -16,9 +10,9 @@ import {
 } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
 import { CustomPaper } from "~/components";
+import PrimalityTestInfo from "./PrimalityTestInfo";
 
 interface PrimalityTestFormProps {
-  openModal: MouseEventHandler<HTMLButtonElement>;
   onSubmit: (number: string) => void;
   disabled: boolean;
   result: boolean | null;
@@ -28,15 +22,23 @@ interface PrimalityTestFormProps {
 const INTEGER_REGEX: RegExp = /^([2-9]|[1-9][0-9]+)$/;
 
 const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
-  openModal,
   onSubmit,
   disabled,
   result,
   errorMessage
 }) => {
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [number, setNumber] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
   const [formChanged, setFormChanged] = useState<boolean>(false);
+
+  const openHelpModal = (): void => {
+    setOpenModal(true);
+  };
+
+  const closeHelpModal = (): void => {
+    setOpenModal(false);
+  };
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -67,7 +69,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           Is It Prime?
         </Typography>
         <Tooltip title="Click this icon for more information on primes.">
-          <IconButton onClick={openModal}>
+          <IconButton onClick={openHelpModal}>
             <HelpIcon />
           </IconButton>
         </Tooltip>
@@ -118,6 +120,7 @@ const PrimalityTestForm: FC<PrimalityTestFormProps> = ({
           }
         </Stack>
       </Stack>
+      <PrimalityTestInfo open={openModal} onClose={closeHelpModal} />
     </CustomPaper>
   );
 };

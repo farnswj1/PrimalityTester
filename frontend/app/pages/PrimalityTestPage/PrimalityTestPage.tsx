@@ -1,9 +1,8 @@
-import { type FC, useState } from "react";
+import { type FC } from "react";
 import { Container } from "@mui/material";
 import { APIService } from "~/services";
 import { useFetch } from "~/hooks";
 import PrimalityTestForm from "./PrimalityTestForm";
-import PrimalityTestInfo from "./PrimalityTestInfo";
 
 const getAlertMessage = (status: number | null): string | null => {
   switch (status) {
@@ -20,7 +19,6 @@ const getAlertMessage = (status: number | null): string | null => {
 };
 
 const PrimalityTestPage: FC = () => {
-  const [openModal, setOpenModal] = useState<boolean>(false);
   const [{ loading, status, data: result }, dispatch] = useFetch<boolean>();
   const alertMessage = getAlertMessage(status);
 
@@ -32,26 +30,13 @@ const PrimalityTestPage: FC = () => {
       .catch((error: unknown) => dispatch({ type: "error", error }));
   };
 
-  const openHelpModal = (): void => {
-    setOpenModal(true);
-  };
-
-  const closeHelpModal = (): void => {
-    setOpenModal(false);
-  };
-
   return (
     <Container maxWidth="sm">
       <PrimalityTestForm
-        openModal={openHelpModal}
         onSubmit={handleSubmit}
         disabled={loading}
         result={result}
         errorMessage={alertMessage}
-      />
-      <PrimalityTestInfo
-        open={openModal}
-        onClose={closeHelpModal}
       />
     </Container>
   );
